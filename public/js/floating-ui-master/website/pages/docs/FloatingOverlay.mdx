@@ -1,0 +1,44 @@
+# FloatingOverlay
+
+Provides base styling for a fixed overlay element to dim content
+or block pointer events behind a floating element.
+
+It's a regular `<div />{:js}`, so it can be styled via any CSS
+solution you prefer.
+
+```js
+import {FloatingOverlay} from '@floating-ui/react';
+
+function App() {
+  return (
+    <FloatingOverlay>
+      <div />
+    </FloatingOverlay>
+  );
+}
+```
+
+## Props
+
+```ts
+interface Props {
+  lockScroll?: boolean;
+}
+```
+
+### lockScroll
+
+Whether the `<body>{:html}` is prevented from scrolling while the
+overlay is rendered. Uses a robust technique that works on iOS
+and handles horizontal scrolling.
+
+```js
+<FloatingOverlay lockScroll>
+  {/* floating element */}
+</FloatingOverlay>
+```
+
+If you need a more advanced solution, or find enabling this prop
+causes unwanted side effects in your application,
+[react-remove-scroll](https://www.npmjs.com/package/react-remove-scroll)
+is a solid solution.

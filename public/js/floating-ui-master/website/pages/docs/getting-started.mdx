@@ -1,0 +1,116 @@
+import introInline from '../../assets/intro.inline.jpg';
+
+# Getting Started
+
+Floating UI is a library that helps you create "floating"
+elements such as tooltips, popovers, dropdowns, and more.
+
+<CircleImage name="intro" inline={introInline} />
+
+It offers two main features:
+
+1. **Anchor positioning**: Anchor a floating element (such as a
+   tooltip) to another element (such as a button) while
+   simultaneously ensuring it stays in view as best as possible
+   by avoiding collisions. This feature is available for all
+   platforms.
+2. **User interactions for React**: Hooks and components for
+   composing interactions to create accessible floating UI
+   components.
+
+## Why
+
+Floating elements are absolutely positioned, typically anchored
+to another UI element. Ensuring a floating element remains
+anchored next to another element can be challenging, especially
+in unique layout contexts like scrolling containers.
+
+Absolute positioning can also cause problems when the floating
+element is too close to the edge of the viewport and becomes
+obscured, also known as a collision. When a collision occurs, the
+position must be adjusted to ensure the floating element remains
+visible.
+
+Further, floating elements are often interactive, which can raise
+complex accessibility issues when designing user interactions.
+
+Floating UI offers a set of low-level features to help you
+navigate these challenges and build accessible floating UI
+components.
+
+## Install
+
+To install Floating UI, you can use a package manager like npm or
+a CDN. There are different versions available for different
+platforms.
+
+### Vanilla
+
+Use on the [web](/docs/computePosition) with vanilla JavaScript
+(`dom` refers to the
+[Document Object Model](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
+to work with HTML/SVG elements).
+
+```bash
+npm install @floating-ui/dom
+```
+
+### React
+
+Use with [React DOM](/docs/react) or
+[React Native](/docs/react-native).
+
+#### React DOM
+
+```bash
+npm install @floating-ui/react
+```
+
+#### React Native
+
+```bash
+npm install @floating-ui/react-native
+```
+
+### Vue
+
+Use with [Vue](/docs/vue).
+
+```bash
+npm install @floating-ui/vue
+```
+
+### Canvas or other platforms
+
+If you're targeting a platform other than the vanilla DOM (web),
+React, or React Native, you can create your own
+[Platform](/docs/platform). This allows you to support things
+like Canvas/WebGL, or other platforms that can run JavaScript.
+
+```bash
+npm install @floating-ui/core
+```
+
+## CDN
+
+Floating UI can be loaded via CDN using ESM or UMD format.
+
+### ESM
+
+```js
+import {computePosition} from 'https://cdn.jsdelivr.net/npm/@floating-ui/dom@__DOM_VERSION__/+esm';
+```
+
+### UMD
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@floating-ui/core@__CORE_VERSION__"></script>
+<script src="https://cdn.jsdelivr.net/npm/@floating-ui/dom@__DOM_VERSION__"></script>
+```
+
+All exports will be available on `window.FloatingUIDOM{:js}`.
+
+## Migration from Popper
+
+If you are coming to Floating UI from Popper v2, there is a
+[migration guide available here](/docs/migration).

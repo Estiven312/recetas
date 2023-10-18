@@ -1,0 +1,19 @@
+name: Unit
+description: Performs unit tests checks
+runs:
+  using: composite
+  steps:
+    - run: npm run build
+      shell: sh
+    - run: npm -w packages/core test
+      shell: sh
+    - run: npm -w packages/dom test
+      shell: sh
+    - run: npm -w packages/react-dom test
+      shell: sh
+    - run: npm -w packages/react test
+      shell: sh
+    - run: npm -w packages/vue test
+      shell: sh
+    - run: npm -w packages/utils test
+      shell: sh
