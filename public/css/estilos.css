@@ -1,33 +1,33 @@
 @font-face {
     font-family: 'montserrat-bold';
-    src: url('../font/Montserrat/static/Montserrat-Bold.ttf');
+    src: url('../font/Montserrat/static/Montserrat-Bold.ttf=swap');
     font-style: bold;
     font-weight: bold;
 }
 
 @font-face {
     font-family: 'Lato';
-    src: url('../font/Lato/Lato-Bold.ttf');
+    src: url('../font/Lato/Lato-Bold.ttf=swap');
     font-style: bold;
     font-weight: bold;
 }
 
 @font-face {
     font-family: 'montserrat-bold';
-    src: url('../font/Lato/Lato-Regular.ttf');
+    src: url('../font/Lato/Lato-Regular.ttf=swap');
 
 }
 
 @font-face {
     font-family: 'Ralewey';
-    src: url('../font/Raleway/static/Raleway-Bold.ttf');
+    src: url('../font/Raleway/static/Raleway-Bold.ttf=swap');
     font-style: bold;
     font-weight: bold;
 }
 
 @font-face {
     font-family: Bayon;
-    src: url('../font/Bayon/Bayon-Regular.ttf');
+    src: url('../font/Bayon/Bayon-Regular.ttf=swap');
 }
 
 
