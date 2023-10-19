@@ -1,33 +1,41 @@
 @font-face {
     font-family: 'montserrat-bold';
-    src: url('../font/Montserrat/static/Montserrat-Bold.ttf=swap');
+    src: url('../font/Montserrat/static/Montserrat-Bold.woff2');
     font-style: bold;
     font-weight: bold;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Lato';
-    src: url('../font/Lato/Lato-Bold.ttf=swap');
+    src: url('../font/Lato/Lato-Bold.woff2');
     font-style: bold;
     font-weight: bold;
+    font-display: swap;
 }
 
 @font-face {
-    font-family: 'montserrat-bold';
-    src: url('../font/Lato/Lato-Regular.ttf=swap');
+    font-family:'montserrat-bold';
+    src: url('../font/Montserrat/static/Montserrat-Bold.woff2');
+  
+    font-style: bold;
+    font-weight: bold;
+    font-display: swap;
 
 }
 
 @font-face {
     font-family: 'Ralewey';
-    src: url('../font/Raleway/static/Raleway-Bold.ttf=swap');
+    src: url('../font/Raleway/static/Raleway-Bold.woff2');
     font-style: bold;
     font-weight: bold;
+    font-display: swap;
+
 }
 
 @font-face {
     font-family: Bayon;
-    src: url('../font/Bayon/Bayon-Regular.ttf=swap');
+    src: url('../font/Bayon/Bayon-Regular.woff2');
 }
 
 
@@ -77,9 +85,11 @@ nav {
 
 .navbar .navbar-brand {
     color: rgb(8, 8, 8);
-    font-size: 40px;
-    font-family: "Bayon" !important;
+    font-size: 30px;
+    font-family: "lato" !important;
+    font-weight: 900;
     padding-right: 40px;
+    
 
 
 }
@@ -556,9 +566,9 @@ border:  solid  #cfb05c 1px;
 
     .navbar .navbar-brand {
 
-        font-size: 35px;
-        font-family: "Bayon" !important;
-        padding-right: 40px;
+        font-size: 27px;
+      
+       padding-right: 0px;
 
     }
 
