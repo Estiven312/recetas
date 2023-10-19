@@ -75,9 +75,7 @@
                                             <div class="row">
                                                 <div class="imagen-card col-md-12 ">
                                                     <img src="{{ asset('/img/pizza.webp') }}" alt=" pizza"
-                                                        class="img-fluid" loading="lazy">
-                                                    
-
+                                                        class="img-fluid" >
                                                 </div>
                                                 <div class="nombre-card ">
                                                     <small>Categoria</small>

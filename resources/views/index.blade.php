@@ -17,7 +17,7 @@
                     </div>
 
                     <div class="imagen">
-                        <img src="{{ asset('/img/pizza.webp') }}" alt=" pizza" class="img-fluid" loading="lazy">
+                        <img src="{{ asset('/img/pizza.webp') }}" alt=" pizza" class="img-fluid" >
                     </div>
                 </div>
 
@@ -71,7 +71,7 @@
                                 <a href="">
                                     <div class="row">
                                         <div class=" col-7 imagen-card">
-                                            <img src="{{ asset('/img/pizza.webp') }}" alt=" pizza" class="img-fluid" loading="lazy">
+                                            <img src="{{ asset('/img/pizza.webp') }}" alt=" pizza" class="img-fluid" >
                                             
 
                                         </div>

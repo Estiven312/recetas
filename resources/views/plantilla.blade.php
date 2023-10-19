@@ -7,8 +7,10 @@
     <title>Index</title>
     <meta name="description"
         content="Recetas fáciles y deliciosas para todos los gustos. Encuentra las recetas que buscas, paso a paso y con fotos.">
-    <link rel="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    
+    <link  rel="stylesheet" href="css/estilos.css" as="style" >
+    
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" rel="preload">
 
 
 
@@ -160,7 +162,7 @@
                 </ul>
             </div>
     </footer>
-    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js" lazy></script>
 </body>
 
 </html>
