@@ -1,7 +1,8 @@
 @extends('plantilla')
 
-
-
+@section('estilos')
+<link  rel="stylesheet" href="css/estilos.css" as="style" >
+@endsection
 
 @section('content')
     <div class="container-fluid" id="recetas">

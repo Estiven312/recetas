@@ -1,4 +1,7 @@
 @extends('plantilla')
+@section('estilos')
+<link  rel="stylesheet" href="css/estilos.css" as="style" >
+@endsection
 
 
 
