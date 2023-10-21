@@ -1,9 +1,3 @@
-*,
-body {
-    padding: 0;
-    margin: 0
-}
-
 .dropdown button,
 .dropdown-menu,
 .navbar-toggler {
@@ -21,10 +15,8 @@ nav {
     transition: .5s
 }
 
-body,
-main {
-    overflow-x: hidden
-}
+
+
 
 #recetas .filtro h1,
 #recetas .filtro select,
@@ -144,16 +136,17 @@ form button {
 }
 
 #vistaReceta .principal {
-    height: 100vh;
+    height: auto;
     background-color: #fff3e0;
     padding: 10px;
+    overflow-x: hidden;
 }
 
 #vistaReceta .principal .col-md-7 {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 90vh;
+    height: 60vh;
 }
 
 #vistaReceta .principal .col-md-7 h2 {
@@ -189,7 +182,7 @@ form button {
     justify-content: center;
     text-align: center;
 
-    height: 90vh;
+    height: 80vh;
 }
 
 #vistaReceta .contenedor_card {
@@ -208,8 +201,8 @@ form button {
     border: none;
     position: relative;
 
-    flex: 0 0 230px;
-    height: 190px;
+    flex: 0 0 420px;
+    height: 320px;
     overflow: hidden;
     margin-left: 1.5rem;
     border-radius: 18px;
@@ -315,9 +308,16 @@ form button {
 
 }
 
-#vistaReceta .anuncio3 {
-    background-color: #fff3e0;
-    padding: 30px;
+#vistaReceta .contenedor-iframe {
+    padding-left: 185px;
+    width: 100%;
+    max-height: 650px;
+    height: auto;
+}
+
+#vistaReceta .contenedor-iframe iframe {
+    width: 100%;
+    min-height: 550px;
 }
 
 #vistaReceta .contenedor_similares {
@@ -327,25 +327,30 @@ form button {
     justify-content: center;
 
 }
-#vistaReceta .contenedor-2{
-    padding-left:110px ;
+
+#vistaReceta .contenedor-2 {
+    padding-left: 110px;
 }
+
 #vistaReceta .contenedor_similares a {
- text-decoration: none;
-color: #000;
+    text-decoration: none;
+    color: #000;
 
 }
+
 #vistaReceta .contenedor_similares .similares:hover {
     transform: scale(1.1);
     transition: all 0.5s;
     text-decoration: underline;
-   
-   
-   }
-#vistaReceta .contenedor_similares .titulo{
+
+
+}
+
+#vistaReceta .contenedor_similares .titulo {
     padding-left: 90px;
     padding-bottom: 50px;
 }
+
 #vistaReceta .contenedor_similares h2 {
     font-style: bold;
     font-size: 50px !important;
@@ -377,35 +382,27 @@ color: #000;
     font-family:
         "Lato";
     font-size: 12px;
-
     padding: 4px;
-
-
-
 }
-#vistaReceta .contenedor_similares .col-5  h3{
+
+#vistaReceta .contenedor_similares .col-5 h3 {
     font-family: ' montserrat-bold';
     font-size: 20px;
     font-weight: 600;
-   
-    
     padding: 4px;
 }
 
+.contenedor_anuncio {
+    position: relative;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+.anun {
+    position: sticky !important;
+    height: 85vh;
+    width: 100%;
+    top: 100px;
+    background-color: #cd9f55;
+}
 
 footer {
     background-color: #fff3e0;
@@ -437,9 +434,14 @@ footer ul li:hover {
     text-decoration: underline solid 1px black
 }
 
+
+
+
 @media screen and (max-width:767px) {
+
+    main,
     body {
-        overflow-x: hidden
+        overflow-x: hidden !important
     }
 
     footer h2 {
@@ -513,6 +515,7 @@ footer ul li:hover {
 
     }
 
+
     #vistaReceta .contenedor_card {
         overflow-x: scroll !important;
         scrollbar-width: auto;
@@ -520,6 +523,11 @@ footer ul li:hover {
         align-items: left;
         padding: 1.5rem 0;
         justify-content: left;
+    }
+
+    #vistaReceta .card {
+        flex: 0 0 250px;
+        height: 220px;
     }
 
     #vistaReceta .info div {
@@ -544,7 +552,7 @@ footer ul li:hover {
     }
 
     #vistaReceta .lst_ingredientes {
-        padding-top: 30px;
+        padding-top: 100px;
         padding-left: 10px;
     }
 
@@ -555,17 +563,12 @@ footer ul li:hover {
         color: black;
     }
 
-
-    #vistaReceta .anuncio4,.anuncio3,
-    .anuncio2,
-    .anuncio {
-        height: 200px;
-        padding: 10px;
-        background-color: transparent;
-    }
-
     #vistaReceta .intrucciones {
         padding-left: 10px;
+    }
+
+    #vistaReceta .contenedor_intrucciones {
+        padding-top: 100px !important;
     }
 
     #vistaReceta .intrucciones h2 {
@@ -579,29 +582,48 @@ footer ul li:hover {
         font-family: ' Raleway';
         font-size: 18px;
         padding: 10px 10px 10px 0px !important;
+    }
+    #vistaReceta .contenedor-iframe {
+        padding-left: 0px;
+        width: 100%;
+        max-height: 400px;
+        padding-bottom: 20px;
+    }
+    
+    
+    #vistaReceta .contenedor-iframe iframe {
+        width: 100%;
+        min-height: 350px;
+    }
 
+
+    .contenedor_anuncio {
+        position: relative;
     }
-    #vistaReceta .contenedor-2{
-        padding-left:0px ;
+
+    .anun {
+        position: static;
+        height: 50vh;
+        width: 100%;
+        top: 100px;
+        background-color: #fff3e0;
     }
+
+    #vistaReceta .contenedor-2 {
+        padding-left: 0px;
+    }
+
     #vistaReceta .contenedor_similares {
         padding: 10px;
-    
-      
-    
     }
+
     #vistaReceta .contenedor_similares .col-md-4 {
         padding-right: 0px;
         padding-bottom: 20px;
-    
-    
     }
-    #vistaReceta .contenedor_similares .titulo{
+
+    #vistaReceta .contenedor_similares .titulo {
         padding-left: 10px;
         padding-bottom: 30px;
     }
-
-
-
-
 }

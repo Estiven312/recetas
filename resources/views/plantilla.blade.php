@@ -7,7 +7,7 @@
     <title>Index</title>
     <meta name="description"
         content="Recetas fáciles y deliciosas para todos los gustos. Encuentra las recetas que buscas, paso a paso y con fotos.">
-    @yield("estilos")
+    @yield('estilos')
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" rel="preload">
 
 
@@ -111,9 +111,8 @@
                     </ul>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="" type="submit"><img
-                                src="{{ asset('/img/magnifying-glass-solid.svg') }}" alt=""
-                                width="25px"></button>
+                        <button class="" type="submit"><img src="{{ asset('/img/magnifying-glass-solid.svg') }}"
+                                alt="" width="25px"></button>
                     </form>
 
                 </div>
@@ -136,7 +135,7 @@
 
                 <h2>
                     <a class="navbar-brand" href="#">SABORCULINARIO</a>
-                    
+
                 </h2>
                 <h1>Recetas para todos los gustos</h1>
 
@@ -148,8 +147,8 @@
                     <li><a href="">Recetas</a></li>
                     <li><a href="">Qué comprar</a></li>
                     <li><a href="">Recetas Faciles</a></li>
-                  
-                   
+
+
                 </ul>
 
 
@@ -160,7 +159,8 @@
                 </ul>
             </div>
     </footer>
-    <script src="bootstrap/js/bootstrap.bundle.min.js" lazy></script>
+
 </body>
+<script src="bootstrap/js/bootstrap.bundle.min.js" lazy></script>
 
 </html>
