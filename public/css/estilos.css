@@ -31,18 +31,7 @@
 }
 
 
-* {
-    padding: 0;
-    margin: 0;
 
-}
-
-body {
-    padding: 0;
-    margin: 0;
-    overflow-x: hidden;
-
-}
 
 h1 {
     font-family: ' montserrat-bold';
@@ -193,17 +182,6 @@ footer ul li:hover {
 .set-card .titulo-card h3,
 form input {
     font-family: ' Bayon' !important
-}
-
-
-
-
-
-
-
-main {
-    overflow-x: hidden;
-
 }
 
 .ba {
@@ -497,6 +475,9 @@ main .contenedor-padre .imagen img {
 
 
 }
+#recetas body{
+    overflow: auto;
+}
 
 #recetas .filtro {
     padding-top: 110px;
@@ -505,10 +486,11 @@ main .contenedor-padre .imagen img {
 }
 
 #recetas .filtro h1 {
-    font-size: 80px;
+    font-size: 120px;
     font-weight: 900;
     padding-left: 20px;
-    color: #fff
+    text-transform: uppercase;
+    color: white
 }
 
 #recetas .filtro select {
@@ -516,7 +498,8 @@ main .contenedor-padre .imagen img {
     height: 35px;
     background-color: #fff;
     border: none;
-    margin: 20px
+    margin: 20px;
+    border-radius: 2%;
 }
 
 #recetas .spacio-but {
@@ -540,7 +523,19 @@ main .contenedor-padre .imagen img {
     background-color: #fff;
     border: 1px solid #cfb05c
 }
+#recetas .contenedor_anuncio{
+    position: relative !important;
+   
+}
 
+#recetas     .anuncio_for{
+    position: sticky !important;
+    height: 85vh;
+    width: 100%;
+    top: 100px;
+    background-color: #fef9f0;
+
+}
 
 
 
@@ -744,6 +739,11 @@ main .contenedor-padre .imagen img {
         padding-right: 2% !important;
         padding-top: 2% !important;
     
+    }
+    .anuncio_for{
+        max-height: 400px;
+        min-height: 200px;
+        width: 100%;
     }
 
 

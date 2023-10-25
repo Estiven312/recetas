@@ -22,3 +22,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\\Http\\Controllers\\ControladorWebHome@index');
 Route::get('/Recetas', 'App\\Http\\Controllers\\ControladorWebRecetas@index');
 Route::get('/vista', 'App\\Http\\Controllers\\ControladorWebVistaRecetas@index');
+Route::get('/compras', 'App\\Http\\Controllers\\ControladorWebCompras@index');

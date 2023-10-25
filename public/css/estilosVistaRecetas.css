@@ -30,7 +30,7 @@ form input {
 }
 
 @font-face {
-    font-family: montserrat-bold;
+    font-family: 'montserrat-bold';
     src: url('../font/Montserrat/static/Montserrat-Bold.woff2');
     font-style: bold;
     font-weight: 700;
@@ -38,15 +38,15 @@ form input {
 }
 
 @font-face {
-    font-family: Lato;
-    src: url('../font/Lato/Lato-Bold.woff2');
-    font-style: bold;
+    font-family: 'Lato';
+    src: url('../font/Lato/Lato-Bold.ttf');
+  
     font-weight: 700;
     font-display: swap
 }
 
 @font-face {
-    font-family: Ralewey;
+    font-family: 'Ralewey';
     src: url('../font/Raleway/static/Raleway-Bold.woff2');
     font-style: bold;
     font-weight: 700;
@@ -58,10 +58,6 @@ form input {
     font-family: 'Bayon';
     src: url('../font/Bayon/Bayon-Regular.ttf');
 }
-
-
-
-
 h1,
 h3 {
     font-family: ' montserrat-bold'
@@ -137,7 +133,7 @@ form button {
 
 #vistaReceta .principal {
     height: auto;
-    background-color: #fff3e0;
+  
     padding: 10px;
     overflow-x: hidden;
 }
@@ -192,7 +188,7 @@ form button {
     align-items: center;
     padding: 1.5rem 0;
     justify-content: center;
-    background-color: #fff3e0;
+ 
 
 
 }
@@ -275,16 +271,6 @@ form button {
 }
 
 
-#vistaReceta .anuncio2 {
-
-
-    background-color: #fff3e0;
-
-    padding: 30PX;
-
-
-
-}
 
 #vistaReceta .contenedor_intrucciones {
     padding-top: 100px;
@@ -401,7 +387,7 @@ form button {
     height: 85vh;
     width: 100%;
     top: 100px;
-    background-color: #cd9f55;
+    background-color: #fef9f0;
 }
 
 footer {
@@ -578,11 +564,15 @@ footer ul li:hover {
         color: black;
     }
 
+
+
     #vistaReceta .intrucciones ol li {
         font-family: ' Raleway';
         font-size: 18px;
         padding: 10px 10px 10px 0px !important;
     }
+
+
     #vistaReceta .contenedor-iframe {
         padding-left: 0px;
         width: 100%;
@@ -590,6 +580,8 @@ footer ul li:hover {
         padding-bottom: 20px;
     }
     
+    
+
     
     #vistaReceta .contenedor-iframe iframe {
         width: 100%;

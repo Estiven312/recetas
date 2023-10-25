@@ -8,11 +8,11 @@
 
 
         <div class="row">
-            <div class="col-12 espacio  text-center">
+            <div class="col-12 espacio   text-center">
 
             </div>
 
-            <div class="col-12 principal">
+            <div class="col-12 principal p-1">
                 <div class="row">
                     <div class="col-md-7 col-sm-12">
                         <div class="contenedor">
@@ -170,7 +170,7 @@
                             <iframe src="https://www.youtube.com/embed/DOJaGdGoTVo?si=hT9mqPs-9BQm0h1k"
                                 title="YouTube video player" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen></iframe>
+                                allowfullscreen loading="lazy"></iframe>
                         </div>
                     </div>
 
