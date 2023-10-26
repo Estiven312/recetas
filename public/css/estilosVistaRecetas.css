@@ -126,7 +126,7 @@ form button {
 }
 
 #vistaReceta .espacio {
-    padding-top: 70px;
+    padding-top: 100px;
 
 
 }
@@ -236,13 +236,13 @@ form button {
 }
 
 #vistaReceta .info h2 {
-    font-weight: 800;
-    font-size: 30px;
+    font-weight: 600;
+    font-size: 25px;
 }
 
 #vistaReceta .info p {
 
-    font-size: 25px;
+    font-size: 15px !important;
     font-weight: 100;
 }
 

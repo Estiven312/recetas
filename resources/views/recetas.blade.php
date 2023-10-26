@@ -18,14 +18,17 @@
 
                                     <select name="pais" id="pais" class="text-center">
                                         <optgroup label="Pais de origen">
-                                            <option value="" selected>Pais de origen</option>
+                                            <option value="" selected>Seleccionar</option>
                                             <option value="venezolanas">Venezolanas</option>
                                             <option value="colombianas">Colombianas</option>
                                         </optgroup>
                                     </select>
 
                                     <select name="lstRecetas " class="text-center" direction="down">
-                                        <option value="" selected false>Recetas</option>
+                                        <option value="" selected false>Seleccionar</option>
+                                        <optgroup label="Recetas">
+                                            <option value="">Recetas Faciles</option>
+                                        </optgroup>
                                         <optgroup label="Postres">
                                             <option value="helados">Helados</option>
                                             <option value="galletas">Galletas</option>

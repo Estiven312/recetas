@@ -1,0 +1,389 @@
+.dropdown button,
+.dropdown-menu,
+.navbar-toggler {
+    border: none !important
+}
+
+.dropdown-menu,
+nav {
+    background-color: #fff;
+
+}
+
+.card a:hover,
+.descripcion a:hover {
+    transform: scale(1.1);
+    transition: .5s
+}
+
+
+
+
+#recetas .filtro h1,
+#recetas .filtro select,
+#recetas button,
+.dropdown button,
+.nav-item button,
+.nav-item ul li a,
+.set-card .titulo-card h3,
+form input {
+    font-family: ' monserrat-bold' !important
+}
+
+@font-face {
+    font-family: 'montserrat-bold';
+    src: url('../font/Montserrat/static/Montserrat-Bold.woff2');
+    font-style: bold;
+    font-weight: 700;
+    font-display: swap
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('../font/Lato/Lato-Bold.ttf');
+
+    font-weight: 700;
+    font-display: swap
+}
+
+@font-face {
+    font-family: 'Ralewey';
+    src: url('../font/Raleway/static/Raleway-Bold.woff2');
+    font-style: bold;
+    font-weight: 700;
+    font-display: swap;
+
+}
+
+@font-face {
+    font-family: 'Bayon';
+    src: url('../font/Bayon/Bayon-Regular.ttf');
+}
+
+
+
+
+h1,
+h3 {
+    font-family: ' montserrat-bold'
+}
+
+h2 {
+    font-family: ' Raleway'
+}
+
+p {
+    font-family: 'Lato';
+}
+
+.dropdown-menu,
+.dropdown-menu li a,
+a {
+    font-family: ' monserrat-bold'
+}
+
+nav {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .1)
+}
+
+.navbar .navbar-brand {
+    color: rgb(8, 8, 8);
+    font-size: 40px;
+    font-family: "Bayon" !important;
+    padding-right: 40px;
+}
+
+.navbar-toggler {
+    box-shadow: none !important
+}
+
+.card a,
+.cont-recetas-menor {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .1)
+}
+
+button span i {
+    color: #000 !important;
+    font-size: 30px
+}
+
+.nav-link {
+    color: #fff !important;
+    font-size: 20px !important
+}
+
+.dropdown button {
+    background: 0 0;
+    color: #000;
+    font-size: 20px !important;
+    padding-left: 0
+}
+
+form button {
+    background: 0 0;
+    border: none;
+    color: #635f5f;
+    font-size: 20px
+}
+
+.nav-item ul li a {
+    font-size: 18px !important
+}
+
+.espacio {
+
+    padding-top: 110px;
+
+
+}
+
+.titulo h3 {
+    font-size: 50px;
+    font-weight: 500;
+
+}
+
+.imagen {
+
+    width: 100%;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+}
+
+.info {
+    display: flex;
+    padding-bottom: 10px;
+}
+
+.info span {
+    color: black;
+    padding-right: 10px;
+    text-transform: uppercase;
+
+}
+
+.imagen img {
+    width: 100%;
+    height: auto;
+}
+
+.articulo {
+    padding-top: 15px;
+}
+
+.articulo h1 {
+    text-transform: uppercase;
+    font-size: 40px;
+}
+
+.articulo h2 {
+    font-size: 30px;
+}
+
+.articulo h3 {
+    font-size: 20px;
+}
+
+.articulo p,
+li {
+    font-size: 15px !important;
+
+}
+
+
+.articulo p,
+li,
+h2,
+h3 {
+    text-align: justify !important;
+    color: black;
+}
+
+
+
+.similares {
+    width: 100%;
+}
+
+.contenedor_guia {
+    padding: 30px;
+}
+
+.contenedor_guias h2 {
+    font-size: 50px;
+    font-weight: 900px;
+    text-transform: uppercase;
+}
+
+.guia {
+    width: 100%;
+    padding: 10px;
+
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.guia:hover {
+    transform: scale(1.1);
+    transition: all 0.5s;
+    text-decoration: underline;
+}
+
+.guia a {
+    text-decoration: none;
+    color: black;
+}
+
+.contenedor_img {
+    width: 100%;
+}
+
+.contenedor_img img {
+    width: 100%;
+    height: auto;
+}
+
+.contenedor_img {
+    width: 100%;
+}
+
+.contenedor_descripcion span {
+    font-size: 13px;
+}
+
+.contenedor_descripcion h3 {
+    font-size: 26px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.contenedor {
+    position: relative;
+    padding-top: 15px;
+}
+
+
+.contenedor .anuncio {
+    background-color: #fff3e0;
+    height: 84vh;
+    width: 100%;
+    position: sticky;
+    top: 100px;
+    right: 0;
+}
+
+
+
+
+
+
+footer {
+    background-color: #fff3e0;
+    padding: 20px;
+    overflow: hidden;
+}
+
+footer h2 {
+    font-weight: 900;
+    font-size: 35px;
+    color: #000
+}
+
+footer h1 {
+    font-size: 13px
+}
+
+footer ul {
+    list-style-type: none
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 15px;
+    font-weight: 600
+}
+
+footer ul li:hover {
+    text-decoration: underline solid 1px black
+}
+
+@media screen and (max-width:767px) {
+
+    main,
+    body {
+        overflow-x: hidden !important
+    }
+
+    footer h2 {
+        font-weight: 900;
+        font-size: 30px;
+        color: #000
+    }
+
+    .navbar .navbar-brand {
+        font-size: 27px;
+        padding-right: 0
+    }
+
+    .espacio {
+        padding-top: 80px;
+    }
+
+    .titulo h3 {
+        font-size: 35px;
+        font-weight: 500;
+
+    }
+
+    .info span {
+        font-size: 10px;
+
+    }
+
+    .articulo h1 {
+        text-transform: uppercase;
+        font-size: 30px;
+        text-transform: none;
+    }
+
+    .articulo p,
+    li {
+        font-size: 14px !important;
+
+    }
+    .contenedor_descripcion span {
+        font-size: 12px;
+    }
+    
+    .contenedor_descripcion h3 {
+        font-size: 20px !important;
+    }
+    .contenedor .anuncio {
+        background-color: #fff3e0;
+        height: 60vh;
+        width: 100%;
+    }
+    .contenedor_guias {
+        padding-top: 10px;
+    }
+    .contenedor_guias h2 {
+        font-size: 40px;
+        font-weight: 900px;
+        text-transform: uppercase;
+    }
+
+}
