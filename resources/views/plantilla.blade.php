@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <title>SABORCULINARIO</title>
+    
     <meta name="description"
         content="Recetas fáciles y deliciosas para todos los gustos. Encuentra las recetas que buscas, paso a paso y con fotos.">
+        <link rel="shortcut icon" href="img/EmojioneTaco.png" type="image/x-icon">
+        
     @yield('estilos')
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" rel="preload">
 

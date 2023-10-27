@@ -56,16 +56,8 @@
                                     <button class="btn">Entrar</button>
                                 </div>
                             </div>
-
-
-
-
-
-
                         </form>
                     </div>
-
-
                 </div>
             </div>
         </div>

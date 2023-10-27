@@ -28,3 +28,4 @@ Route::get('/vistaGuia', 'App\\Http\\Controllers\\ControladorWebVistaGuia@Index'
 
 Route::get('/sistema/login', 'App\\Http\\Controllers\\login@Index');
 Route::post('/sistema/login', 'App\\Http\\Controllers\\login@validar');
+Route::get('/sistema/home', 'App\\Http\\Controllers\\home@index');

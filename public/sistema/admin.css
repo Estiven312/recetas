@@ -1,0 +1,135 @@
+@font-face {
+    font-family: 'montserrat-bold';
+    src: url('../font/Montserrat/static/Montserrat-Bold.ttf');
+    font-style: bold;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('../font/Lato/Lato-Bold.ttf');
+    font-style: bold;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'montserrat-bold';
+    src: url('../font/Lato/Lato-Regular.ttf');
+
+}
+
+@font-face {
+    font-family: 'Ralewey';
+    src: url('../font/Raleway/static/Raleway-Bold.ttf');
+    font-style: bold;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Bayon';
+    src: url('../font/Bayon/Bayon-Regular.ttf');
+}
+
+
+
+
+h1 {
+    font-family: ' Bayon';
+}
+
+h2 {
+    font-family: ' Raleway';
+}
+
+h3 {
+    font-family: ' montserrat-bold';
+}
+
+p {
+    font-family: 'Lato';
+}
+
+a {
+
+    font-family: ' monserrat-bold';
+
+}
+
+.icono h1 {
+    font-size: 25px;
+    font-weight: 600px;
+}
+
+.barra {
+   
+    height: 100vh;
+    position: relative;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+   
+}
+.contenedor_links {
+    align-items: left;
+    justify-content: left;
+    padding-top: 30%;
+}
+.contenedor_links ul{
+    padding: 0px;
+}
+.contenedor_links ul li {
+    list-style: none;
+    padding-bottom: 30px;
+ 
+}
+
+.contenedor_links ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+}
+
+.contenedor_links img {
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+}
+
+.perfil {
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.perfil img {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+}
+
+.perfil h2 {
+    font-size: 15px;
+}
+
+.perfil .nombres {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.exit {
+    margin-top: 20px !important;
+}
+
+.exit img {
+    height: 30px;
+    width: 30px;
+}
+
+.exit button {
+    border: hidden;
+    background-color: transparent;
+    font-family: 'montserrat-bold';
+
+}

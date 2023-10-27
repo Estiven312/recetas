@@ -164,9 +164,9 @@ form button {
 }
 
 #vistaReceta .principal img {
-    width: 550px;
-    height: 550px;
-    border-radius: 50%;
+    width: 600px;
+    height: 450px;
+    border-radius: 5%;
 
 
 
@@ -197,8 +197,8 @@ form button {
     border: none;
     position: relative;
 
-    flex: 0 0 420px;
-    height: 320px;
+    flex: 0 0 320px;
+    height: 220px;
     overflow: hidden;
     margin-left: 1.5rem;
     border-radius: 18px;

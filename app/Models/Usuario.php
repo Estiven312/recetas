@@ -6,6 +6,7 @@ use App\Models\Usuario as ModelsUsuario;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
+use SebastianBergmann\Type\TrueType;
 
 class Usuario extends Model
 {
@@ -24,21 +25,24 @@ class Usuario extends Model
         if (count($usuario) == 1) {
             // El usuario existe
             $usuario = $usuario[0];
+            $name=$usuario->name;
 
             $password = request()->input('password');
 
             $hash = $usuario->password;
+            
 
             if (Hash::check($password, $hash)) {
-                // La contraseña es correcta
-                return True;
+                
+                return[True,$name] ;
             } else {
                 // La contraseña es incorrecta
-                return False;
+                return [False, ''];
             }
         } else {
             // El usuario no existe
-            return False;
+            return [False, ''];
+            
         }
     }
 }

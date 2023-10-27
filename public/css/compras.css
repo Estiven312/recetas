@@ -139,9 +139,10 @@ form button {
 
 .primera_seccion {
 
-    /* background-image: url(../img/knives.webp);
+    background-image: url(../img/back.webp);
     background-size: cover;
- */
+    height: 100vh;
+ 
 
 
 
@@ -152,26 +153,33 @@ form button {
  
 }
 .contenedor_borde{
-    border-bottom: 2px black solid;
+    padding-top: 5%;
+    border-bottom: 2px rgb(255, 255, 255) solid ;
+    width: 80%;
+   
     
 
     
 }
 
 .titulo h1 {
-    font-size: 60px;
-    font-weight: 900;
+    font-size: 100px;
+    font-weight: 100;
     font-style: bold;
-    color: rgb(12, 12, 12);
+    color: rgb(255, 255, 255);
     padding-left: 20px;
 
+}
+.iconos {
+    
+    padding-top: 100px;
 }
 
 .contenedor_iconos {
     background-color: #f5f5f5;
-    margin: 20px;
-    width: 120px;
-    height: 120px;
+    margin: 40px;
+    width: 150px;
+    height: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -204,8 +212,8 @@ form button {
 }
 
 .iconos a img {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
   
 }
 
@@ -353,11 +361,29 @@ footer ul li:hover {
     }
     .titulo h1 {
         font-size: 35px;
-        font-weight: 900;
+        font-weight: 100;
         font-style: bold;
         color: rgb(12, 12, 12);
         padding-left: 5px;
+        color: white;
+        font-weight: 100;
     
+    }
+    .primera_seccion {
+
+        background-image: url(../img/backM2.webp);
+       background-size: cover;
+       
+        height: 75vh;
+     
+    
+    
+    
+    }
+    .contenedor_borde{
+        padding-top: 5%;
+        border-bottom: 2px rgb(255, 255, 255) solid ;
+        width: 100%;
     }
     
     .contenedor_iconos {
@@ -369,6 +395,7 @@ footer ul li:hover {
         display: flex;
         justify-content: center;
         align-items: center;
+      
        
     }
     
@@ -383,6 +410,7 @@ footer ul li:hover {
     }
     .contenedor_iconos a p{
         padding-top: 10px;
+      
     }
     
     .contenedor_iconos a .col-12 {

@@ -480,17 +480,20 @@ main .contenedor-padre .imagen img {
 }
 
 #recetas .filtro {
-    padding-top: 110px;
-    background-image: url("/img/back_re.webp");
-    background-size: cover
+    padding-top: 150px;
+    padding-bottom: 120px;
+    background-image: url("/img/back-2.webp");
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 #recetas .filtro h1 {
     font-size: 120px;
-    font-weight: 900;
+    font-weight: 100;
     padding-left: 20px;
     text-transform: uppercase;
-    color: white
+  color: white;
+   
 }
 
 #recetas .filtro select {
@@ -499,7 +502,7 @@ main .contenedor-padre .imagen img {
     background-color: #fff;
     border: none;
     margin: 20px;
-    border-radius: 2%;
+    border-radius: 5% !important;
 }
 
 #recetas .spacio-but {
@@ -702,10 +705,16 @@ main .contenedor-padre .imagen img {
         padding: 4px;
     
     }
+    #recetas .filtro {
+        padding-top: 220px;
+        padding-bottom: 120px;
+        background-image: url("/img/back-movil.webp");
+        background-size: cover
+    }
     #recetas .filtro h1 {
         font-family: ' monserrat-bold' !important;
-        font-size: 50px;
-        font-weight: 900;
+        font-size: 40px;
+        font-weight: 100;
         padding-left: 20px;
         color: #fff
     }
