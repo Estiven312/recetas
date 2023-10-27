@@ -451,7 +451,7 @@ footer ul li:hover {
 
     #vistaReceta .principal {
 
-        background-color: #fff3e0;
+        background-color: white;
         padding: 10px;
         height: auto;
     }
@@ -487,9 +487,9 @@ footer ul li:hover {
     }
 
     #vistaReceta .principal img {
-        width: 300px;
-        height: 300px;
-        border-radius: 50%;
+        width: 100%;
+        height: auto;
+        border-radius: 5%;
 
 
 

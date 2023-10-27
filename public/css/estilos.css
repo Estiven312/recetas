@@ -1,28 +1,58 @@
+.dropdown button,
+.dropdown-menu,
+.navbar-toggler {
+    border: none !important
+}
+
+.dropdown-menu,
+nav {
+    background-color: #fff;
+
+}
+
+.card a:hover,
+.descripcion a:hover {
+    transform: scale(1.1);
+    transition: .5s
+}
+
+
+
+
+#recetas .filtro h1,
+#recetas .filtro select,
+#recetas button,
+.dropdown button,
+.nav-item button,
+.nav-item ul li a,
+.set-card .titulo-card h3,
+form input {
+    font-family: ' monserrat-bold' !important
+}
+
 @font-face {
     font-family: 'montserrat-bold';
-    src: url('../font/Montserrat/static/Montserrat-Bold.ttf');
+    src: url('../font/Montserrat/static/Montserrat-Bold.woff2');
     font-style: bold;
-    font-weight: bold;
+    font-weight: 700;
+    font-display: swap
 }
 
 @font-face {
     font-family: 'Lato';
     src: url('../font/Lato/Lato-Bold.ttf');
-    font-style: bold;
-    font-weight: bold;
-}
 
-@font-face {
-    font-family: 'montserrat-bold';
-    src: url('../font/Lato/Lato-Regular.ttf');
-
+    font-weight: 700;
+    font-display: swap
 }
 
 @font-face {
     font-family: 'Ralewey';
-    src: url('../font/Raleway/static/Raleway-Bold.ttf');
+    src: url('../font/Raleway/static/Raleway-Bold.woff2');
     font-style: bold;
-    font-weight: bold;
+    font-weight: 700;
+    font-display: swap;
+
 }
 
 @font-face {
@@ -33,101 +63,72 @@
 
 
 
-h1 {
-    font-family: ' montserrat-bold';
+h1,
+h3 {
+    font-family: ' montserrat-bold'
 }
 
 h2 {
-    font-family: ' Raleway';
-}
-
-h3 {
-    font-family: ' montserrat-bold';
+    font-family: ' Raleway'
 }
 
 p {
     font-family: 'Lato';
 }
 
+.dropdown-menu,
+.dropdown-menu li a,
 a {
-
-    font-family: ' monserrat-bold';
-
+    font-family: ' monserrat-bold'
 }
 
 nav {
-
-    background-color: white;
-
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .1)
 }
-
-
 
 .navbar .navbar-brand {
     color: rgb(8, 8, 8);
     font-size: 40px;
     font-family: "Bayon" !important;
     padding-right: 40px;
-
-
 }
 
 .navbar-toggler {
-    border: none !important;
-    box-shadow: none !important;
+    box-shadow: none !important
+}
+
+.card a,
+.cont-recetas-menor {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .1)
 }
 
 button span i {
-    color: black !important;
-    font-size: 30px;
+    color: #000 !important;
+    font-size: 30px
 }
 
 .nav-link {
-    color: white !important;
-    font-size: 20px !important;
-}
-
-.nav-link:hover {
-    color: #cfb05c;
+    color: #fff !important;
+    font-size: 20px !important
 }
 
 .dropdown button {
-    background: none;
-    border: none !important;
-    color: rgb(0, 0, 0);
+    background: 0 0;
+    color: #000;
     font-size: 20px !important;
-    font-family: ' monserrat-bold' !important;
-    padding-left: 0;
-
+    padding-left: 0
 }
-
 
 form button {
-    background: none;
+    background: 0 0;
     border: none;
-    color: rgb(99, 95, 95);
-    font-size: 20px;
+    color: #635f5f;
+    font-size: 20px
 }
 
-.dropdown-menu {
-    border: none !important;
-    background-color: white;
-
-    font-family: ' monserrat-bold';
+.nav-item ul li a {
+    font-size: 18px !important
 }
-
-.dropdown-menu li a {
-    color: rgb(0, 0, 0);
-    font-size: 15px;
-    font-family: ' monserrat-bold';
-}
-
-.dropdown-menu li a:hover {
-    background-color: transparent !important;
-    text-decoration: underline;
-}
-
 form input {
     outline: none !important;
     border: 1px solid black !important;
@@ -484,7 +485,8 @@ main .contenedor-padre .imagen img {
     padding-bottom: 120px;
     background-image: url("/img/back-2.webp");
     background-size: cover;
-    background-attachment: fixed;
+    height: 73vh;
+
 }
 
 #recetas .filtro h1 {
@@ -493,6 +495,9 @@ main .contenedor-padre .imagen img {
     padding-left: 20px;
     text-transform: uppercase;
   color: white;
+
+
+  padding-bottom: 50px;
    
 }
 
@@ -552,16 +557,13 @@ main .contenedor-padre .imagen img {
     body {
         overflow-x: hidden;
     }
-
-
-
     .navbar .navbar-brand {
-
-        font-size: 35px;
-        font-family: "Bayon" !important;
-        padding-right: 40px;
-
+        font-size: 27px;
+        padding-right: 0
     }
+
+
+    
 
     .contenedor-padre {
         width: 100%;
@@ -709,7 +711,9 @@ main .contenedor-padre .imagen img {
         padding-top: 220px;
         padding-bottom: 120px;
         background-image: url("/img/back-movil.webp");
-        background-size: cover
+        background-size: cover;
+   
+        
     }
     #recetas .filtro h1 {
         font-family: ' monserrat-bold' !important;
