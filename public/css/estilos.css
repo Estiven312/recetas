@@ -483,9 +483,9 @@ main .contenedor-padre .imagen img {
 #recetas .filtro {
     padding-top: 150px;
     padding-bottom: 120px;
-    background-image: url("/img/back-2.webp");
+    background-image: url("/img/fondo.webp");
     background-size: cover;
-    height: 73vh;
+    height: 120vh;
 
 }
 
@@ -710,8 +710,9 @@ main .contenedor-padre .imagen img {
     #recetas .filtro {
         padding-top: 220px;
         padding-bottom: 120px;
-        background-image: url("/img/back-movil.webp");
+        background-image: url("/img/fondo2.webp");
         background-size: cover;
+        height: 75vh;
    
         
     }
