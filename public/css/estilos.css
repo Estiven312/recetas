@@ -712,7 +712,7 @@ main .contenedor-padre .imagen img {
         padding-bottom: 120px;
         background-image: url("/img/fondo2.webp");
         background-size: cover;
-        height: 75vh;
+        height: 100vh;
    
         
     }
