@@ -3,47 +3,46 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\paises as pais;
+use App\Models\categoria_guia;
 
-class paises extends Controller
+class categoriaGuia extends Controller
 {
     public function index()
     {
         $request = request();
         if ($request->session()->get('name')) {
-            $categ = new  pais();
-            $paises = $categ->paises();
-
-
-            return view('sistema.paises', compact('paises'));
+            $categoria = new categoria_guia();
+            $cate = $categoria->categorias();
+            return view('sistema.categoriaGuia', compact('cate'));
         } else {
             return redirect('/sistema/login');
         }
     }
 
-    public function nueva()
+
+    public function nuevo()
     {
         $request = request();
         if ($request->session()->get('name')) {
-            return view('sistema.nuevoPais');
+            return view('sistema.categoriaGuiaNueva');
         } else {
             return redirect('/sistema/login');
         }
     }
 
-    public function guardar(Request $reques)
+    public function guardar(Request $request)
     {
-        $request = request();
+
         if ($request->session()->get('name')) {
+            $nombre = htmlspecialchars(request()->input('nombre'));
+            
 
-            $nombre = htmlspecialchars(request()->input('pais'));
 
-
-            $modelo = new pais();
+            $modelo = new categoria_guia();
 
             $modelo->guardar($nombre);
 
-            return redirect('/sistema/paises');
+            return redirect('sistema/categoria/guia');
         } else {
             return redirect('/sistema/login');
         }
@@ -53,12 +52,12 @@ class paises extends Controller
     {
         $request = request();
         if ($request->session()->get('name')) {
-            $modelo = new pais();
+            $modelo = new categoria_guia();
 
 
-            $pa = $modelo->buscar_id($id);
+            $categoria = $modelo->buscar_id($id);
 
-            return view('sistema.nuevoPais', compact('pa'));
+            return view('sistema.categoriaGuiaNueva', compact('categoria'));
         } else {
             return redirect('/sistema/login');
         }
@@ -70,10 +69,14 @@ class paises extends Controller
     {
         $request = request();
         if ($request->session()->get('name')) {
-            $modelo = new pais();
-            $nombre = htmlspecialchars(request()->input('pais'));
+            $modelo = new categoria_guia();
+
+            $nombre = htmlspecialchars(request()->input('nombre'));
+
+
+
             $categoria = $modelo->actualizar($id, $nombre);
-            return redirect('/sistema/paises');
+            return redirect('/sistema/categoria/guia');
         } else {
             return redirect('/sistema/login');
         }
@@ -83,9 +86,9 @@ class paises extends Controller
     {
         $request = request();
         if ($request->session()->get('name')) {
-            $modelo = new pais();
+            $modelo = new categoria_guia();
             $modelo->eliminar($id);
-            return redirect('/sistema/paises');
+            return redirect('/sistema/categoria/guia');
         } else {
             return redirect('/sistema/login');
         }

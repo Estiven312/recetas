@@ -45,7 +45,7 @@
 
                                 <div class="col-12">
                                     <label for="">Password</label>
-                                    <input type="password" name="" id="" class="form-control" required>
+                                    <input type="password" name="password" id="" class="form-control" required>
                                 </div>
 
                                 <div class="col-12 olvide">

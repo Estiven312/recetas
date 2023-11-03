@@ -5,63 +5,99 @@ namespace App\Http\Controllers;
 use App\Models\categorias as cate;
 use Illuminate\Http\Request;
 use Illuminate\Redis\RedisServiceProvider;
+use App\Models\Usuario;
 
 class categorias extends Controller
 {
-    public function index(){
-        $categ = new cate();
-        $categorias= $categ->categorias();
+    public function index(Request $request)
+    {
+        
+        if ($request->session()->get('name')) {
 
 
-        return view('sistema.categoria',compact('categorias'));
+
+            $categ = new cate();
+            $categorias = $categ->categorias();
+
+
+            return view('sistema.categoria', compact('categorias'));
+        } else {
+            return redirect('/sistema/login');
+        }
     }
 
-    public function nueva(){
-        return view('sistema.nuevaCategoria');
-    } 
-
-    public function guardar(Request $reques){
-        $nombre = htmlspecialchars(request()->input('nombre'));
-        echo $nombre;
-       
-
-        $modelo= new cate();
-    
-        $modelo->guardar($nombre);
-
-        return redirect('sistema/categorias');
-
+    public function nueva()
+    {
+        $request = request();
+        if ($request->session()->get('name')) {
+            return view('sistema.nuevaCategoria');
+        } else {
+            return redirect('/sistema/login');
+        }
     }
 
-    public function update($id){
-        $modelo= new cate();
-        
-       
-        $categoria=$modelo->buscar_id($id);
+    public function guardar(Request $reques)
+    {
+        $request = request();
+        if ($request->session()->get('name')) {
+            $nombre = htmlspecialchars(request()->input('nombre'));
+            echo $nombre;
 
-        return view('sistema.nuevaCategoria', compact('categoria'));
 
+            $modelo = new cate();
 
+            $modelo->guardar($nombre);
+
+            return redirect('sistema/categorias');
+        } else {
+            return redirect('/sistema/login');
+        }
     }
 
-    
+    public function update($id)
+    {
+        $request = request();
+        if ($request->session()->get('name')) {
+            $modelo = new cate();
 
-    public function actualizar($id){
 
-        $modelo= new cate();
-        
-        $nombre = htmlspecialchars(request()->input('nombre'));
+            $categoria = $modelo->buscar_id($id);
 
-        
-       
-        $categoria=$modelo->actualizar($id,$nombre);
-        return redirect('/sistema/categorias');
+            return view('sistema.nuevaCategoria', compact('categoria'));
+        } else {
+            return redirect('/sistema/login');
+        }
     }
 
-    public function delete($id){
-        $modelo= new cate();
-        $modelo->eliminar($id);
-        return redirect('/sistema/categorias');
-        
+
+
+    public function actualizar($id)
+    {
+        $request = request();
+        if ($request->session()->get('name')) {
+
+            $modelo = new cate();
+
+            $nombre = htmlspecialchars(request()->input('nombre'));
+
+
+
+            $categoria = $modelo->actualizar($id, $nombre);
+            return redirect('/sistema/categorias');
+        } else {
+            return redirect('/sistema/login');
+        }
+    }
+
+    public function delete($id)
+    {
+        $request = request();
+        if ($request->session()->get('name')) {
+            $modelo = new cate();
+            $modelo->eliminar($id);
+            return redirect('/sistema/categorias');
+        } else {
+            return redirect('/sistema/login');
+        }
     }
 }

@@ -22,93 +22,102 @@ class nuevaReceta extends Controller
 
     public function index(Request $request)
     {
+        $request = request();
+        if ($request->session()->get('name')) {
 
-        $modelo = new paises();
-        $modelo1 = new categorias();
-        $paises = $modelo->paises();
-        $categorias = $modelo1->categorias();
-        return view('sistema.nuevaReceta', compact('paises', 'categorias'));
-    }
-    public function guardar(Request $request)
-    {
-       
-      
-
-
-
-        $receta = new recetas();
-        $adicionales = new img_adicionals();
-        $nombre = htmlspecialchars(request()->input('nombre'));
-        $descripcion = htmlspecialchars(request()->input('descripcion'));
-        $tiempo = htmlspecialchars(request()->input('tiempo'));
-        $rinde = htmlspecialchars(request()->input('alcanza'));
-        $video = htmlspecialchars(request()->input('video'));
-        $instrucciones = htmlspecialchars(request()->input('instrucciones'));
-        $instrucciones = str_replace('*/', '<li>', $instrucciones);
-        $instrucciones = str_replace('/*', '</li>', $instrucciones);
-
-        $ingredientes = htmlspecialchars(request()->input('ingredientes'));
-
-        $ingredientes = str_replace('*/', '<li>', $ingredientes);
-        $ingredientes = str_replace('/*', '</li>', $ingredientes);
-
-
-        $pais = request()->input('lts_pais');
-        $categoria = request()->input('lts_categoria');
-        if (empty($nombre) || empty($descripcion) || empty($tiempo) || empty($rinde) || empty($instrucciones) || empty($ingredientes) || empty($pais) || empty($categoria)) {
             $modelo = new paises();
             $modelo1 = new categorias();
             $paises = $modelo->paises();
             $categorias = $modelo1->categorias();
-            $alerta = 'No puedes dejar campos vacios!';
-            return view('sistema.nuevaReceta', compact('alerta', 'paises', 'categorias'));
+            return view('sistema.nuevaReceta', compact('paises', 'categorias'));
+        } else {
+            return redirect('/sistema/login');
         }
+    }
+    public function guardar(Request $request)
+    {
 
-        // Obtiene la fecha actual
-        $fecha = Carbon::now();
-        // Establece la zona horaria de Colombia
-        $fecha->setTimezone('America/Bogota');
-        // Devuelve la fecha en formato año-mes-día
-        $fechaActual = $fecha->format('Y-m-d');
-        $nombre_img = "";
-        $imagenes_guardadas = [];
-        if ($_FILES["principal"]["error"] === UPLOAD_ERR_OK) { //Se adjunta imagen
-            $extension = pathinfo($_FILES["principal"]["name"], PATHINFO_EXTENSION);
-            $nombre_img = str_replace(' ', '_', date("Ymdhmsi") . ".$extension");
-            $archivo = $_FILES["principal"]["tmp_name"];
+        if ($request->session()->get('name')) {
 
-            if ($extension === "jpeg" || $extension === "jpg" || $extension === "jfif" || $extension === "png"  || $extension === "webp") {
-                move_uploaded_file($archivo, public_path('files/' . $nombre_img));
-            } else {
-                return "";
+
+
+
+            $receta = new recetas();
+            $adicionales = new img_adicionals();
+            $nombre = htmlspecialchars(request()->input('nombre'));
+            $descripcion = htmlspecialchars(request()->input('descripcion'));
+            $tiempo = htmlspecialchars(request()->input('tiempo'));
+            $rinde = htmlspecialchars(request()->input('alcanza'));
+            $video = htmlspecialchars(request()->input('video'));
+            $instrucciones = htmlspecialchars(request()->input('instrucciones'));
+            $instrucciones = str_replace('*/', '<li>', $instrucciones);
+            $instrucciones = str_replace('/*', '</li>', $instrucciones);
+
+            $ingredientes = htmlspecialchars(request()->input('ingredientes'));
+
+            $ingredientes = str_replace('*/', '<li>', $ingredientes);
+            $ingredientes = str_replace('/*', '</li>', $ingredientes);
+
+
+            $pais = request()->input('lts_pais');
+            $categoria = request()->input('lts_categoria');
+            if (empty($nombre) || empty($descripcion) || empty($tiempo) || empty($rinde) || empty($instrucciones) || empty($ingredientes) || empty($pais) || empty($categoria)) {
+                $modelo = new paises();
+                $modelo1 = new categorias();
+                $paises = $modelo->paises();
+                $categorias = $modelo1->categorias();
+                $alerta = 'No puedes dejar campos vacios!';
+                return view('sistema.nuevaReceta', compact('alerta', 'paises', 'categorias'));
             }
-        }
-        /*Cargar la receta*/
 
-        $id = $receta->guardar($nombre, $descripcion, $pais, $tiempo, $rinde, $ingredientes, $instrucciones, $categoria, $nombre_img, $video, $fechaActual);
+            // Obtiene la fecha actual
+            $fecha = Carbon::now();
+            // Establece la zona horaria de Colombia
+            $fecha->setTimezone('America/Bogota');
+            // Devuelve la fecha en formato año-mes-día
+            $fechaActual = $fecha->format('Y-m-d');
+            $nombre_img = "";
+            $imagenes_guardadas = [];
+            if ($_FILES["principal"]["error"] === UPLOAD_ERR_OK) { //Se adjunta imagen
+                $extension = pathinfo($_FILES["principal"]["name"], PATHINFO_EXTENSION);
+                $nombre_img = str_replace(' ', '_', date("Ymdhmsi") . ".$extension");
+                $archivo = $_FILES["principal"]["tmp_name"];
 
-        if (isset($_FILES["complementarias"])) {
-            $imagenes = $_FILES["complementarias"];
-            $archivos_subidos = [];
-            foreach ($imagenes["tmp_name"] as $key => $tmp_name) {
-                if ($imagenes["error"][$key] === UPLOAD_ERR_OK) {
-                    $extension = pathinfo($imagenes["name"][$key], PATHINFO_EXTENSION);
-                    $nombre_img = str_replace(' ', '_', date("Ymdhmsi") . "_$key.$extension"); // Agrega $key al nombre del archivo
-                    $archivo = $tmp_name;
-                    if (in_array($extension, ["jpeg", "jpg", "jfif", "png", "webp"])) {
-                        move_uploaded_file($archivo, public_path('files/' . $nombre_img));
-                        $archivos_subidos[] = $nombre_img;
-                    }
+                if ($extension === "jpeg" || $extension === "jpg" || $extension === "jfif" || $extension === "png"  || $extension === "webp") {
+                    move_uploaded_file($archivo, public_path('files/' . $nombre_img));
+                } else {
+                    return "";
                 }
             }
-            foreach ($archivos_subidos as  $archivo) {
+            /*Cargar la receta*/
 
-                $adicionales->guardar($id, $archivo);
+            $id = $receta->guardar($nombre, $descripcion, $pais, $tiempo, $rinde, $ingredientes, $instrucciones, $categoria, $nombre_img, $video, $fechaActual);
+
+            if (isset($_FILES["complementarias"])) {
+                $imagenes = $_FILES["complementarias"];
+                $archivos_subidos = [];
+                foreach ($imagenes["tmp_name"] as $key => $tmp_name) {
+                    if ($imagenes["error"][$key] === UPLOAD_ERR_OK) {
+                        $extension = pathinfo($imagenes["name"][$key], PATHINFO_EXTENSION);
+                        $nombre_img = str_replace(' ', '_', date("Ymdhmsi") . "_$key.$extension"); // Agrega $key al nombre del archivo
+                        $archivo = $tmp_name;
+                        if (in_array($extension, ["jpeg", "jpg", "jfif", "png", "webp"])) {
+                            move_uploaded_file($archivo, public_path('files/' . $nombre_img));
+                            $archivos_subidos[] = $nombre_img;
+                        }
+                    }
+                }
+                foreach ($archivos_subidos as  $archivo) {
+
+                    $adicionales->guardar($id, $archivo);
+                }
             }
+
+
+            return redirect('sistema/recetas');
+        } else {
+            return redirect('/sistema/login');
         }
-
-
-        return redirect('sistema/recetas');
     }
 
     public function update(Request $request, $id)
@@ -126,89 +135,94 @@ class nuevaReceta extends Controller
 
     public function actualizar(Request $request, $id)
     {
-
-       
-       $receta = new recetas();
-        $adicionales = new img_adicionals();
-        $nombre = htmlspecialchars(request()->input('nombre'));
-        $descripcion = htmlspecialchars(request()->input('descripcion'));
-        $tiempo = htmlspecialchars(request()->input('tiempo'));
-        $rinde = htmlspecialchars(request()->input('alcanza'));
-        $video = htmlspecialchars(request()->input('video'));
-        $instrucciones = htmlspecialchars(request()->input('instrucciones'));
-        $instrucciones = str_replace('*/', '<li>', $instrucciones);
-        $instrucciones = str_replace('/*', '</li>', $instrucciones);
-
-        $ingredientes = htmlspecialchars(request()->input('ingredientes'));
-
-        $ingredientes = str_replace('*/', '<li>', $ingredientes);
-        $ingredientes = str_replace('/*', '</li>', $ingredientes);
+        $request = request();
+        if ($request->session()->get('name')) {
 
 
-        $pais = request()->input('lts_pais');
-        $categoria = request()->input('lts_categoria');
+            $receta = new recetas();
+            $adicionales = new img_adicionals();
+            $nombre = htmlspecialchars(request()->input('nombre'));
+            $descripcion = htmlspecialchars(request()->input('descripcion'));
+            $tiempo = htmlspecialchars(request()->input('tiempo'));
+            $rinde = htmlspecialchars(request()->input('alcanza'));
+            $video = htmlspecialchars(request()->input('video'));
+            $instrucciones = htmlspecialchars(request()->input('instrucciones'));
+            $instrucciones = str_replace('*/', '<li>', $instrucciones);
+            $instrucciones = str_replace('/*', '</li>', $instrucciones);
 
-        $receta_id = $receta->buscar_id($id);
-        
+            $ingredientes = htmlspecialchars(request()->input('ingredientes'));
 
-        // Obtiene la fecha actual
-        $fecha = Carbon::now();
-        // Establece la zona horaria de Colombia
-        $fecha->setTimezone('America/Bogota');
-        // Devuelve la fecha en formato año-mes-día
-        $fechaActual = $fecha->format('Y-m-d');
-        $nombre_img = "";
-        $imagenes_guardadas = [];
-        if ($_FILES["principal"]["error"] === UPLOAD_ERR_OK) { //Se adjunta imagen
-            $extension = pathinfo($_FILES["principal"]["name"], PATHINFO_EXTENSION);
-            $nombre_img = str_replace(' ', '_', date("Ymdhmsi") . ".$extension");
-
-            $archivo = $_FILES["principal"]["tmp_name"];
-
-            if ($extension === "jpeg" || $extension === "jpg" || $extension === "jfif" || $extension === "png" ||  $extension === "webp") {
-                $imagen = public_path('files/' . $receta_id[0]['imagen']);
-                unlink($imagen, null);
-                move_uploaded_file($archivo, public_path('files/' . $nombre_img));
-            } else {
-                return "";
-            }
-        }
-        if ($nombre_img == "") {
-            $nombre_img = $receta_id[0]['imagen'];
-        }
-
-       
-
-        $receta->actualizar($id, $nombre, $descripcion, $pais, $tiempo, $rinde, $ingredientes, $instrucciones, $categoria, $nombre_img, $video, $fechaActual);
-        $img_adicional = $adicionales->buscar($id);
+            $ingredientes = str_replace('*/', '<li>', $ingredientes);
+            $ingredientes = str_replace('/*', '</li>', $ingredientes);
 
 
-        if (isset($_FILES["complementarias"])) {
-            $imagenes = $_FILES["complementarias"];
-            $archivos_subidos = [];
-            foreach ($imagenes["tmp_name"] as $key => $tmp_name) {
-                if ($imagenes["error"][$key] === UPLOAD_ERR_OK) {
-                    $extension = pathinfo($imagenes["name"][$key], PATHINFO_EXTENSION);
-                    $nombre_img = str_replace(' ', '_', date("Ymdhmsi") . "_$key.$extension"); // Agrega $key al nombre del archivo
-                    $archivo = $tmp_name;
-                    if (in_array($extension, ["jpeg", "jpg", "jfif", "png", "webp"])) {
-                        move_uploaded_file($archivo, public_path('files/' . $nombre_img));
-                        $archivos_subidos[] = $nombre_img;
-                    }
+            $pais = request()->input('lts_pais');
+            $categoria = request()->input('lts_categoria');
+
+            $receta_id = $receta->buscar_id($id);
+
+
+            // Obtiene la fecha actual
+            $fecha = Carbon::now();
+            // Establece la zona horaria de Colombia
+            $fecha->setTimezone('America/Bogota');
+            // Devuelve la fecha en formato año-mes-día
+            $fechaActual = $fecha->format('Y-m-d');
+            $nombre_img = "";
+            $imagenes_guardadas = [];
+            if ($_FILES["principal"]["error"] === UPLOAD_ERR_OK) { //Se adjunta imagen
+                $extension = pathinfo($_FILES["principal"]["name"], PATHINFO_EXTENSION);
+                $nombre_img = str_replace(' ', '_', date("Ymdhmsi") . ".$extension");
+
+                $archivo = $_FILES["principal"]["tmp_name"];
+
+                if ($extension === "jpeg" || $extension === "jpg" || $extension === "jfif" || $extension === "png" ||  $extension === "webp") {
+                    $imagen = public_path('files/' . $receta_id[0]['imagen']);
+                    unlink($imagen, null);
+                    move_uploaded_file($archivo, public_path('files/' . $nombre_img));
+                } else {
+                    return "";
                 }
             }
-            foreach ($img_adicional as $re) {
-                $imagen = public_path('files/' . $re['nombre']);
-                unlink($imagen, null);
+            if ($nombre_img == "") {
+                $nombre_img = $receta_id[0]['imagen'];
             }
-            $adicionales->eliminar($id);
 
-            foreach ($archivos_subidos as $key => $archivo) {
 
-                $adicionales->guardar($id, $archivo);
+
+            $receta->actualizar($id, $nombre, $descripcion, $pais, $tiempo, $rinde, $ingredientes, $instrucciones, $categoria, $nombre_img, $video, $fechaActual);
+            $img_adicional = $adicionales->buscar($id);
+
+
+            if (isset($_FILES["complementarias"])) {
+                $imagenes = $_FILES["complementarias"];
+                $archivos_subidos = [];
+                foreach ($imagenes["tmp_name"] as $key => $tmp_name) {
+                    if ($imagenes["error"][$key] === UPLOAD_ERR_OK) {
+                        $extension = pathinfo($imagenes["name"][$key], PATHINFO_EXTENSION);
+                        $nombre_img = str_replace(' ', '_', date("Ymdhmsi") . "_$key.$extension"); // Agrega $key al nombre del archivo
+                        $archivo = $tmp_name;
+                        if (in_array($extension, ["jpeg", "jpg", "jfif", "png", "webp"])) {
+                            move_uploaded_file($archivo, public_path('files/' . $nombre_img));
+                            $archivos_subidos[] = $nombre_img;
+                        }
+                    }
+                }
+                foreach ($img_adicional as $re) {
+                    $imagen = public_path('files/' . $re['nombre']);
+                    unlink($imagen, null);
+                }
+                $adicionales->eliminar($id);
+
+                foreach ($archivos_subidos as $key => $archivo) {
+
+                    $adicionales->guardar($id, $archivo);
+                }
             }
+            return redirect('sistema/recetas');
+        } else {
+            return redirect('/sistema/login');
         }
-        return redirect('sistema/recetas');
     }
 
 
@@ -217,19 +231,24 @@ class nuevaReceta extends Controller
 
     public function eliminar(Request $request, $id)
     {
+        $request = request();
+        if ($request->session()->get('name')) {
 
-        $receta = new recetas();
-        $adicionales = new img_adicionals();
+            $receta = new recetas();
+            $adicionales = new img_adicionals();
 
-        $imagenes = $adicionales->eliminar($id);
-        foreach ($imagenes as $nombre) {
-            $imagen_path = public_path('files/' . $nombre['nombre']);
-            unlink($imagen_path, null);
+            $imagenes = $adicionales->eliminar($id);
+            foreach ($imagenes as $nombre) {
+                $imagen_path = public_path('files/' . $nombre['nombre']);
+                unlink($imagen_path, null);
+            }
+            $img = $receta->eliminar($id);
+            $imagen = public_path('files/' . $img[0]['imagen']);
+            unlink($imagen, null);
+
+            return redirect('sistema/recetas');
+        } else {
+            return redirect('/sistema/login');
         }
-        $img = $receta->eliminar($id);
-        $imagen = public_path('files/' . $img[0]['imagen']);
-        unlink($imagen, null);
-
-        return redirect('sistema/recetas');
     }
 }

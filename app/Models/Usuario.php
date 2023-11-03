@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 use SebastianBergmann\Type\TrueType;
+use sesion;
 
 class Usuario extends Model
 {
@@ -27,22 +28,31 @@ class Usuario extends Model
             $usuario = $usuario[0];
             $name=$usuario->name;
 
-            $password = request()->input('password');
+            $lista=[];
 
             $hash = $usuario->password;
-            
 
-            if (Hash::check($password, $hash)) {
+           
+           
+            $validar=Hash::check($password, $hash);
+         
+
+            if ($validar) {
                 
-                return[True,$name] ;
+                $lista=[True,$name];
+                return $lista ;
             } else {
                 // La contraseña es incorrecta
-                return [False, ''];
+                $lista=[False, ''];
+                return $lista;
             }
+
         } else {
             // El usuario no existe
-            return [False, ''];
+            $lista=[False, ''];
+            return $lista;
             
         }
     }
+
 }

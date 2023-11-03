@@ -44,8 +44,10 @@
                        
 
                             
-                          
-                                <li><img src="{{ asset('/img/Guia.png') }}" alt="guia"><a href="">GUIAS</a></li>
+                                <li><img src="{{ asset('/img/Guia.png') }}" alt="guia"><a href="/sistema/categoria/guia"> CATEGORIA GUIAS</a></li>
+
+
+                                <li><img src="{{ asset('/img/Guia.png') }}" alt="guia"><a href="/sistema/guias">GUIAS</a></li>
                             </ul>
                         </div>
 
@@ -60,7 +62,8 @@
                                 <div class="col-12 p-3 exit">
                                    
                                     <img src="{{ asset('/img/exit.png') }}" alt="exit">
-                                    <button>Cerrar sessión</button>
+                                    
+                                    <a href="/sistema/logout">Cerrar sessión</a>
 
 
                                 </div>
