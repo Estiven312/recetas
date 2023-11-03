@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>SABORCULINARIO</title>
+    <link rel="shortcut icon" href="/img/EmojioneTaco.png" type="image/x-icon">
 
-
-
-    <link rel="stylesheet" href="../sistema/admin.css">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" rel="preload">
+    <link rel="stylesheet" href=" {{ asset('/sistema/admin.css') }}">
+    <link rel="stylesheet" href="{{ asset('/bootstrap/css/bootstrap.min.css') }}" rel="preload">
+   
+    
 
 
 
@@ -32,17 +33,17 @@
 
                             <ul>
                                 <li> <img src="{{ asset('/img/Home.png') }}" alt="home"><a href="">HOME</a></li>
+
+                                <li><img src="{{ asset('/img/categoria.png') }}" alt="categorias"><a href="/sistema/categorias">CATEGORIAS</a></li>
                             
-                                <li><img src="{{ asset('/img/Receta.png') }}" alt="Receta"><a href="">RECETAS</a></li>
+
+                                <li> <img src="{{ asset('/img/bandera.png') }}" alt="pasies"><a href="/sistema/paises">PAISES</a></li>
+                         
+                            
+                                <li><img src="{{ asset('/img/Receta.png') }}" alt="Receta"><a href="recetas">RECETAS</a></li>
                        
 
-                                <li><img src="{{ asset('/img/Postre.png') }}" alt="Postre"><a href="">POSTRES</a></li>
                             
-
-                                <li> <img src="{{ asset('/img/Bebida.png') }}" alt="Bebida"><a href="">BEBIDAS</a></li>
-                         
-
-                                <li><img src="{{ asset('/img/Ensalada.png') }}" alt="ensalada"><a href="">ENSALADAS</a></li>
                           
                                 <li><img src="{{ asset('/img/Guia.png') }}" alt="guia"><a href="">GUIAS</a></li>
                             </ul>
@@ -75,7 +76,7 @@
 
             </div>
 
-            <div class="col-9">
+            <div class=" col-12 " id="contenido">
                 @yield('contenido')
 
             </div>
@@ -87,6 +88,10 @@
 
 
 </body>
-<script src="../bootstrap/js/bootstrap.bundle.min.js" lazy></script>
+
+
+<script src="{{ asset('/bootstrap/js/bootstrap.bundle.min.js') }}" lazy></script>
+
+
 
 </html>

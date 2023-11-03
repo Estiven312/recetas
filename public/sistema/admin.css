@@ -61,24 +61,32 @@ a {
 }
 
 .barra {
-   
+
     height: 100vh;
     position: relative;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
-   
+    position: fixed;
+
 }
+
+#contenido {
+    padding-left: 300px;
+}
+
 .contenedor_links {
     align-items: left;
     justify-content: left;
     padding-top: 30%;
 }
-.contenedor_links ul{
+
+.contenedor_links ul {
     padding: 0px;
 }
+
 .contenedor_links ul li {
     list-style: none;
     padding-bottom: 30px;
- 
+
 }
 
 .contenedor_links ul li a {
@@ -132,4 +140,145 @@ a {
     background-color: transparent;
     font-family: 'montserrat-bold';
 
+}
+
+
+
+#recetas .titulo {
+    padding: 40px;
+}
+
+#recetas .titulo h2 {
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+#recetas .contenedor img {
+    height: 30px;
+    width: 30px;
+}
+
+#recetas .contenedor a {
+    font-size: 20px;
+    color: black;
+    border: 1px solid black;
+
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 10px;
+
+
+}
+
+#recetas .formulario input {
+    width: 500px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 10px;
+    outline: none !important;
+    padding-left: 10px;
+}
+
+#recetas .formulario button {
+    border: none;
+    color: black;
+    background-color: transparent;
+}
+
+#recetas .contenedor a:hover {
+    transform: scale(1.1);
+    transition: all 0.5s;
+    background-color: beige;
+}
+
+#recetas .formulario button img:hover {
+    transform: scale(1.1);
+    transition: all 0.5s;
+
+}
+
+#recetas .contenedor_tabla {
+    padding-top: 30px;
+}
+
+#recetas table {
+    width: 100%;
+}
+
+#nueva form .nombre textarea {
+    width: 100%;
+    min-height: 50px;
+    font-size: 15px !important;
+    text-align: justify  !important;
+    padding: 10px;
+
+    
+
+
+
+}
+
+#nueva form textarea {
+    width: 100%;
+    min-height: 150px;
+    font-size: 14px;
+    text-align: justify  !important;
+    padding: 10px;
+  
+
+
+}
+
+#nueva form select {
+    width: 100%;
+
+    font-size: 15px;
+
+}
+
+#nueva .pt {
+    padding-top: 50px;
+}
+
+
+
+#nueva form{
+   margin-bottom: 50px;
+}
+#nueva input{
+    font-size: 12px;
+    width: 100%;
+    border-radius: 10px;
+    height: 30px;
+   padding: 3px;
+}
+#nueva label{
+    font-size: 15px;
+    font-family: 'Lato';
+}
+.contenedor_button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    
+}
+.contenedor_button button{
+    border-radius: 16px;
+    font-size: 15px;
+    border: none;
+    color: black;
+    width: 300px;
+    background-color: bisque;
+    font-family: 'Lato';
+}
+.contenedor_button button:hover{
+ transform: scale(1.1);
+ transition: all 0.5s;
+ color: white;
+}
+textarea{
+    font-size: 14px;
+    
 }
