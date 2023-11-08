@@ -25,21 +25,17 @@
                     <div class="col-9">
 
                         <div class="formulario">
-                            <form action="" method="post">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <input type="text">
-                                <button class="" type="submit"><img
-                                        src="{{ asset('/img/magnifying-glass-solid.svg') }}" alt=""
-                                        width="25px"></button>
-                            </form>
+                           
                         </div>
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-12 p-3">
 
                         @if (isset($alerta))
+                        <div class="alert alert-warning" role="alert">
                             {{ $alerta }}
-                        @endif
+                        </div>
+                    @endif
                     </div>
                     <div class="col-12 contenedor_tabla">
                         <table class="table">

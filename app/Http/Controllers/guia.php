@@ -208,4 +208,41 @@ class guia extends Controller
             return redirect('/sistema/login');
         }
     }
+    public function busqueda_np(Request $request)
+    {
+        $request = request();
+        if ($request->session()->get('name')) {
+            $entidad = new gui();
+            $palabra = $request->get('coincidencia');
+           
+            $numero = $request->get('numero');
+
+            if ($request->get('coincidencia')) {
+             
+                $palabra = htmlspecialchars($palabra);
+                $entidad = new gui();
+            
+                $guias = $entidad->consultas_palabra($palabra);
+                return view('sistema.guia', compact('guias','palabra'));
+
+            } else {
+                if ($request->get('numero')||$request->get('numero')===0) {
+
+                   
+                    $numero=$numero+15;
+                    if($numero===16){
+                        $numero=15;
+                    }
+                    $guias = $entidad->consultas($numero);
+                    return view('sistema.guia', compact('guias','numero'));
+                
+                    
+                    
+                }
+            return redirect('/sistema/guias');
+            }
+        } else {
+            return redirect('/sistema/login');
+        }
+    }
 }

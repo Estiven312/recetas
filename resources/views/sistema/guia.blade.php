@@ -27,7 +27,8 @@
                         <div class="formulario">
                             <form action="" method="post">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <input type="text">
+                                <input type="text" name="coincidencia"
+                                    value="@if (isset($palabra)) {{ $palabra }} @endif">
                                 <button class="" type="submit"><img
                                         src="{{ asset('/img/magnifying-glass-solid.svg') }}" alt=""
                                         width="25px"></button>
@@ -50,6 +51,7 @@
                                 <tr>
                                     <th></th>
                                     <th>NOMBRE</th>
+                                    <th>IMAGEN</th>
                                     <th>CATEGORÍA</th>
                                     <th></th>
                                 </tr>
@@ -62,6 +64,7 @@
                                                     width="25px"></a></td>
 
                                         <td>{{ htmlspecialchars_decode($guia['nombre']) }}</td>
+                                        <td> <img src="{{ asset('/files/'.$guia['imagen']) }}" alt="editar" width="40px" height="40" style="border-radius: 50%"></td>
 
 
                                         <td>{{ htmlspecialchars_decode($guia['categoria'] )}}</td>
@@ -77,6 +80,16 @@
 
                     </div>
                 </div>
+            </div>
+            <div class="col-12 text-center p-5 boton_siguiente">
+                <form action="" method="post">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="numero"
+                        value="@if (isset($numero)) {{ $numero }}@else{{ 1 }} @endif">
+
+                    <button type="submit">Siguiente</button>
+                </form>
+
             </div>
         </div>
     </div>

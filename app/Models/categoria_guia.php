@@ -34,6 +34,13 @@ class categoria_guia extends Model
         $categoria = categoria_guia::find($id);
         return $categoria;
     }
+    public function buscar_nombre($nombre)
+    {
+        $categoria = categoria_guia::where('nombre', '=', $nombre)
+            ->first();
+
+        return $categoria;
+    }
 
     public function actualizar($id, $nombre)
     {

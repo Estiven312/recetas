@@ -31,6 +31,7 @@ return new class extends Migration
                 ->on('categorias');
             $table->String('imagen');
             $table->String('video');
+            $table->unsignedBigInteger('visitas');
             $table->date('fecha');
          
     

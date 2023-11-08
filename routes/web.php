@@ -21,9 +21,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\\Http\\Controllers\\ControladorWebHome@index');
 Route::get('/recetas', 'App\\Http\\Controllers\\ControladorWebRecetas@index');
-Route::get('/vista', 'App\\Http\\Controllers\\ControladorWebVistaRecetas@index');
-Route::get('/compras', 'App\\Http\\Controllers\\ControladorWebCompras@index');
-Route::get('/vistaGuia', 'App\\Http\\Controllers\\ControladorWebVistaGuia@Index');
+Route::get('/receta/{id}', 'App\\Http\\Controllers\\ControladorWebVistaRecetas@index');
+Route::post('/recetas', 'App\\Http\\Controllers\\ControladorWebRecetas@buscar');
+
+
+Route::get('/guias', 'App\\Http\\Controllers\\ControladorWebCompras@index');
+Route::post('/guias', 'App\\Http\\Controllers\\ControladorWebCompras@otras');
+Route::get('/guia/{id}', 'App\\Http\\Controllers\\ControladorWebVistaGuia@index');
 
 
 Route::get('/sistema/login', 'App\\Http\\Controllers\\login@Index');
@@ -32,6 +36,7 @@ Route::get('/sistema/home', 'App\\Http\\Controllers\\home@index');
 
 
 Route::get('/sistema/recetas', 'App\\Http\\Controllers\\recetas@index');
+Route::post('/sistema/recetas', 'App\\Http\\Controllers\\recetas@busqueda_np');
 
 Route::get('/sistema/nueva', 'App\\Http\\Controllers\\nuevaReceta@index');
 Route::get('/sistema/nueva/{id}', 'App\\Http\\Controllers\\nuevaReceta@update');
@@ -65,6 +70,7 @@ Route::get('/sistema/categoria/guia/nueva/{id}', 'App\\Http\\Controllers\\catego
 Route::post('/sistema/categoria/guia/nueva/{id}', 'App\\Http\\Controllers\\categoriaGuia@actualizar');
 
 Route::get('/sistema/guias', 'App\\Http\\Controllers\\guia@index');
+Route::post('/sistema/guias', 'App\\Http\\Controllers\\guia@busqueda_np');
 
 
 Route::get('/sistema/guia/delete/{id}', 'App\\Http\\Controllers\\guia@eliminar');
@@ -72,6 +78,19 @@ Route::get('/sistema/guia/nueva', 'App\\Http\\Controllers\\guia@nueva');
 Route::post('/sistema/guia/nueva', 'App\\Http\\Controllers\\guia@guardar');
 Route::get('/sistema/guia/nueva/{id}', 'App\\Http\\Controllers\\guia@update');
 Route::post('/sistema/guia/nueva/{id}', 'App\\Http\\Controllers\\guia@actualizar');
+
+
+Route::get('/sistema/anuncios', 'App\\Http\\Controllers\\anuncios@index');
+
+
+Route::get('/sistema/anuncio/nuevo', 'App\\Http\\Controllers\\anuncios@nuevo');
+
+Route::get('/sistema/anuncio/delete/{id}', 'App\\Http\\Controllers\\anuncios@delete');
+
+Route::post('/sistema/anuncio/nuevo', 'App\\Http\\Controllers\\anuncios@guardar');
+Route::get('/sistema/anuncio/nuevo/{id}', 'App\\Http\\Controllers\\anuncios@update');
+Route::post('/sistema/anuncio/nuevo/{id}', 'App\\Http\\Controllers\\anuncios@actualizar');
+
 
 Route::get('/sistema/logout/', 'App\\Http\\Controllers\\login@salir');
 

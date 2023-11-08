@@ -83,9 +83,18 @@ class paises extends Controller
     {
         $request = request();
         if ($request->session()->get('name')) {
-            $modelo = new pais();
-            $modelo->eliminar($id);
-            return redirect('/sistema/paises');
+
+            try {
+
+                $modelo = new pais();
+                $modelo->eliminar($id);
+                return redirect('/sistema/paises');
+            } catch (\Illuminate\Database\QueryException $e) {
+                $categ = new  pais();
+                $paises = $categ->paises();
+                $alerta = 'El pais tiene recetas asociadas. No se puede eliminar.';
+                return view('sistema.paises', compact('paises', 'alerta'));
+            }
         } else {
             return redirect('/sistema/login');
         }

@@ -32,7 +32,7 @@
                         <div class="contenedor_links">
 
                             <ul>
-                                <li> <img src="{{ asset('/img/Home.png') }}" alt="home"><a href="">HOME</a></li>
+                                <li> <img src="{{ asset('/img/Home.png') }}" alt="home"><a href="/sistema/home">HOME</a></li>
 
                                 <li><img src="{{ asset('/img/categoria.png') }}" alt="categorias"><a href="/sistema/categorias">CATEGORIAS</a></li>
                             
@@ -40,7 +40,7 @@
                                 <li> <img src="{{ asset('/img/bandera.png') }}" alt="pasies"><a href="/sistema/paises">PAISES</a></li>
                          
                             
-                                <li><img src="{{ asset('/img/Receta.png') }}" alt="Receta"><a href="recetas">RECETAS</a></li>
+                                <li><img src="{{ asset('/img/Receta.png') }}" alt="Receta"><a href="/sistema/recetas">RECETAS</a></li>
                        
 
                             
@@ -48,6 +48,8 @@
 
 
                                 <li><img src="{{ asset('/img/Guia.png') }}" alt="guia"><a href="/sistema/guias">GUIAS</a></li>
+                            
+                                <li><img src="{{ asset('/img/anuncio.png') }}" alt="guia"><a href="/sistema/anuncios">ANUNCIOS</a></li>
                             </ul>
                         </div>
 
@@ -55,7 +57,7 @@
                             <div class="row">
                                 <div class="col-2">    <img src="{{ asset('/img/knives.webp') }}" alt="cuchillo"></div>
                                 <div class="col-10 nombres">
-                                    <h2>Estiven Carvajal</h2>
+                                    <h2>Administrador</h2>
                                    
                                 </div>
 

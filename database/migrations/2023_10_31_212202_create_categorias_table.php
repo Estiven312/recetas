@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\categorias;
 
 return new class extends Migration
 {
@@ -19,6 +20,17 @@ return new class extends Migration
             $table->string('nombre');
          
         });
+
+        
+        $lista=['Helado','Faciles','Pasteles','Galletas','Smoothies','Frappe','Cocteles','Dulces','Saludables'];
+        foreach($lista as $lis){
+            $categoria = categorias::create([
+                'nombre' => $lis,
+               
+                
+            ]);
+        }
+    
     }
 
     /**

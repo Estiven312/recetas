@@ -63,6 +63,10 @@
 
                        
                         <div class=" pt col-4">
+                            @if(isset($guia))
+
+                            <img src="{{ asset('/files/'.$guia[0]['imagen']) }}" alt="editar" width="400px" height="auto" ></td>
+                            @endif
                             <label for="">Imagen principal</label>
                             <input type="file" name="principal" >
                         </div>

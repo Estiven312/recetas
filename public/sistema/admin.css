@@ -135,10 +135,13 @@ a {
     width: 30px;
 }
 
-.exit button {
+.exit a {
     border: hidden;
     background-color: transparent;
     font-family: 'montserrat-bold';
+    color: black;
+    font-size: 15px;
+    text-decoration: none;
 
 }
 
@@ -281,4 +284,51 @@ a {
 textarea{
     font-size: 14px;
     
+}
+
+.nombre_receta{
+    display: flex;
+}
+
+.nombre_receta span{
+    padding-left: 10px;
+}
+.nombre_receta h2{
+    text-transform: uppercase;
+    font-size: 50px;
+}
+.imagen img{
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 50%;
+
+}
+
+.centrar{
+    padding-top: 140px;
+    align-items: center;
+    justify-content: center;
+    
+    height: 600px;
+  
+
+}
+.centrar p{
+    text-transform: uppercase !important;
+    font-family: 'Bayon';
+    font-size: 40px;
+}
+.boton_siguiente button{
+    background-color: rgb(244, 244, 206);
+    border-radius: 10px;
+    border:none;
+    width: 150px;
+    font-size: 20px;
+    color: black;
+    font-family: 'Bayon';
+}
+.boton_siguiente button:hover{
+  transform: scale(1.1);
+  transition: all  0.5s;
 }

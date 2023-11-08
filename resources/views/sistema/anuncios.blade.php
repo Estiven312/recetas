@@ -8,7 +8,7 @@
 
         <div class="row">
             <div class="col-12 titulo">
-                <h2> Sistema administrativo de categorias</h2>
+                <h2> Sistema administrativo de anuncios</h2>
 
             </div>
 
@@ -19,21 +19,20 @@
                 <div class="row">
                     <div class="col-3">
                         <div class="contenedor">
-                            <a href="/sistema/categoria/guia/nueva"> Nueva Categoria <img src="{{ asset('/img/mas.png') }}"
-                                    alt="nueva"></a>
+                            <a href="/sistema/anuncio/nuevo"> Nuevo anuncio <img src="{{ asset('/img/mas.png') }}" alt="nueva"></a>
                         </div>
                     </div>
                     <div class="col-9">
 
-
+                        <div class="formulario">
+                            
+                        </div>
                     </div>
 
-                    <div class="col-12 p-3">
+                    <div class="col-12">
 
                         @if (isset($alerta))
-                            <div class="alert alert-warning" role="alert">
-                                {{ $alerta }}
-                            </div>
+                            {{ $alerta }}
                         @endif
                     </div>
                     <div class="col-12 contenedor_tabla">
@@ -45,24 +44,25 @@
                                 <tr>
                                     <th></th>
                                     <th>NOMBRE</th>
-
+                                    <th>ANUNCIO</th>
+                                    <th>PAGINA</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($cate as $categoria)
+                                @foreach ($anuncios as $anuncio)
                                     <tr>
 
-                                        <td><a href="/sistema/categoria/guia/nueva/{{ $categoria['id'] }}"><img
-                                                    src="{{ asset('/img/editar.png') }}" alt="editar" width="25px"></a>
-                                        </td>
+                                        <td><a href="/sistema/anuncio/nuevo/{{$anuncio['id']}}"><img src="{{ asset('/img/editar.png') }}" alt="editar"
+                                                    width="25px"></a></td>
 
-                                        <td>{{ htmlspecialchars_decode($categoria['nombre']) }}</td>
-
-
+                                        <td>{{ htmlspecialchars_decode($anuncio['anuncio']) }}</td>
+                                       
 
 
-                                        <td><a href="/sistema/categoria/guia/delete/{{ $categoria['id'] }}">
+                                        <td>{{ htmlspecialchars_decode($anuncio['pagina'] )}}</td>
+
+                                        <td><a href="/sistema/anuncio/delete/{{ $anuncio['id'] }}">
                                                 <img src="{{ asset('/img/borrar.png') }}" alt="editar" width="25px"></a>
                                             </a></td>
 
@@ -77,3 +77,4 @@
         </div>
     </div>
 @endsection
+

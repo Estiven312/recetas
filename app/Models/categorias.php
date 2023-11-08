@@ -11,42 +11,50 @@ class categorias extends Model
     public $timestamps = false;
     protected $fillable = [
         'nombre',
-       
-        
-    ];
-    public function categorias(){
-        $categoria= categorias::all();
-        return $categoria;
 
+
+    ];
+    public function categorias()
+    {
+        $categoria = categorias::all();
+        return $categoria;
     }
 
-    public function guardar($nombre){
+    public function guardar($nombre)
+    {
 
         $categoria = categorias::create([
             'nombre' => $nombre,
-            
+
         ]);
     }
 
-    public function buscar_id($id){
+    public function buscar_id($id)
+    {
         $categoria = categorias::find($id);
         return $categoria;
-
-
     }
-
-    public function actualizar($id,$nombre){
-        $receta = categorias::find($id);
-        
-         // Actualizar los datos
-         $receta->update([
-             'nombre' => $nombre,
-          
-         ]);
-    }
-
-    public function eliminar($id){
-        $this->where('id', $id)->delete();
+    public function buscar_nombre($nombre)
+    {
+        $categoria = categorias::where('nombre', '=', $nombre)
+            ->get();
        
+            return $categoria;
+    }
+
+    public function actualizar($id, $nombre)
+    {
+        $receta = categorias::find($id);
+
+        // Actualizar los datos
+        $receta->update([
+            'nombre' => $nombre,
+
+        ]);
+    }
+
+    public function eliminar($id)
+    {
+        $this->where('id', $id)->delete();
     }
 }

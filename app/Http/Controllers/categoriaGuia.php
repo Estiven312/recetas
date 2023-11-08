@@ -86,9 +86,19 @@ class categoriaGuia extends Controller
     {
         $request = request();
         if ($request->session()->get('name')) {
+            try {
             $modelo = new categoria_guia();
             $modelo->eliminar($id);
             return redirect('/sistema/categoria/guia');
+        } catch (\Illuminate\Database\QueryException $e) {
+
+            $categoria = new categoria_guia();
+            $cate = $categoria->categorias();
+            $alerta = 'La categoria tiene guias asociadas. No se puede eliminar.';
+            return view('sistema.categoriaGuia', compact('cate', 'alerta'));
+        }
+
+
         } else {
             return redirect('/sistema/login');
         }

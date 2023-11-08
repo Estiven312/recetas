@@ -54,4 +54,9 @@ class paises extends Model
     {
         $this->where('id', $id)->delete();
     }
+     public function buscar($pais)
+    {
+        $pa=$this->where('pais', $pais)->get();
+        return $pa;
+    }
 }

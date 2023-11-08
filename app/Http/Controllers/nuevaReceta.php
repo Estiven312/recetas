@@ -10,6 +10,8 @@ use PhpParser\Node\Expr\New_;
 use App\Models\recetas;
 use App\Models\img_adicionals;
 use Carbon\Carbon;
+
+
 use PhpParser\Node\Expr\AssignOp\Coalesce;
 use Symfony\Component\CssSelector\Node\FunctionNode;
 use Validator;
@@ -126,11 +128,17 @@ class nuevaReceta extends Controller
         $modelo = new paises();
         $modelo1 = new categorias();
         $modelo_receta = new recetas();
+        $adicionales= new img_adicionals();
+
         $paises = $modelo->paises();
         $categorias = $modelo1->categorias();
         $id_receta = $id;
         $receta = $modelo_receta->buscar_id($id);
-        return view('sistema.nuevaReceta', compact('paises', 'categorias', 'receta'));
+
+        $imgs=$adicionales->buscar($id);
+
+
+        return view('sistema.nuevaReceta', compact('paises', 'categorias', 'receta','imgs'));
     }
 
     public function actualizar(Request $request, $id)
@@ -161,7 +169,8 @@ class nuevaReceta extends Controller
 
             $receta_id = $receta->buscar_id($id);
 
-
+           $vistas = $receta_id[0]['visitas'];
+         
             // Obtiene la fecha actual
             $fecha = Carbon::now();
             // Establece la zona horaria de Colombia
@@ -188,15 +197,15 @@ class nuevaReceta extends Controller
                 $nombre_img = $receta_id[0]['imagen'];
             }
 
+            
 
-
-            $receta->actualizar($id, $nombre, $descripcion, $pais, $tiempo, $rinde, $ingredientes, $instrucciones, $categoria, $nombre_img, $video, $fechaActual);
+            $receta->actualizar($id, $nombre, $descripcion, $pais, $tiempo, $rinde, $ingredientes, $instrucciones, $categoria, $nombre_img, $video, $vistas, $fechaActual);
             $img_adicional = $adicionales->buscar($id);
 
-
+            $archivos_subidos = [];
             if (isset($_FILES["complementarias"])) {
                 $imagenes = $_FILES["complementarias"];
-                $archivos_subidos = [];
+                
                 foreach ($imagenes["tmp_name"] as $key => $tmp_name) {
                     if ($imagenes["error"][$key] === UPLOAD_ERR_OK) {
                         $extension = pathinfo($imagenes["name"][$key], PATHINFO_EXTENSION);
@@ -208,6 +217,14 @@ class nuevaReceta extends Controller
                         }
                     }
                 }
+
+
+               
+            }
+
+            if(empty($archivos_subidos)){
+                return redirect('sistema/recetas');
+            }else{
                 foreach ($img_adicional as $re) {
                     $imagen = public_path('files/' . $re['nombre']);
                     unlink($imagen, null);
@@ -218,8 +235,9 @@ class nuevaReceta extends Controller
 
                     $adicionales->guardar($id, $archivo);
                 }
+                return redirect('/sistema/recetas');
             }
-            return redirect('sistema/recetas');
+            
         } else {
             return redirect('/sistema/login');
         }

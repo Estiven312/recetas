@@ -24,22 +24,15 @@
                     </div>
                     <div class="col-9">
 
-                        <div class="formulario">
-                            <form action="" method="post">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <input type="text">
-                                <button class="" type="submit"><img
-                                        src="{{ asset('/img/magnifying-glass-solid.svg') }}" alt=""
-                                        width="25px"></button>
-                            </form>
-                        </div>
+                        
                     </div>
 
-                    <div class="col-12">
-
+                    <div class="col-12 p-5">
                         @if (isset($alerta))
+                        <div class="alert alert-warning" role="alert">
                             {{ $alerta }}
-                        @endif
+                        </div>
+                    @endif
                     </div>
                     <div class="col-12 contenedor_tabla">
                         <table class="table">
@@ -58,7 +51,7 @@
                                 @foreach ($categorias as $categoria)
                                     <tr>
 
-                                        <td><a href="categorias/nueva/{{$categoria['id']}}"><img src="{{ asset('/img/editar.png') }}" alt="editar"
+                                        <td><a href="/sistema/categorias/nueva/{{$categoria['id']}}"><img src="{{ asset('/img/editar.png') }}" alt="editar"
                                                     width="25px"></a></td>
 
                                         <td>{{ htmlspecialchars_decode($categoria['nombre']) }}</td>
@@ -66,7 +59,7 @@
 
                                        
 
-                                        <td><a href="categorias/{{ $categoria['id'] }}">
+                                        <td><a href="/sistema/categorias/{{ $categoria['id'] }}">
                                                 <img src="{{ asset('/img/borrar.png') }}" alt="editar" width="25px"></a>
                                             </a></td>
 

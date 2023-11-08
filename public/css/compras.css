@@ -333,7 +333,20 @@ footer ul li a {
 footer ul li:hover {
     text-decoration: underline solid 1px black
 }
-
+.spacio-but {
+    height: 100px;
+}
+.spacio-but button{
+    background-color: #fff3e0;
+    font-size: 20PX;
+    font-family: 'Ralewey';
+    border-radius: 10px;
+    padding: 5px;
+}
+.spacio-but button:hover{
+ transform: scale(1.1);
+ transition: all 0.5s;
+}
 
 @media screen and (max-width:767px) {
 

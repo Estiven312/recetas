@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuario;
+use App\Models\recetas;
+
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
@@ -36,7 +38,12 @@ class login extends Controller
             // Creamos la sesión
            session(['name' => $validar[1]]);
 
-            return view('sistema.home');
+           $recetas=new recetas();
+           $destacada=$recetas->destacada();
+           
+           return view('sistema.home',compact('destacada'));
+
+            
         } else {
 
             return view('sistema.login', compact('alerta'));

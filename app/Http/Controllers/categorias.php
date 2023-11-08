@@ -11,7 +11,7 @@ class categorias extends Controller
 {
     public function index(Request $request)
     {
-        
+
         if ($request->session()->get('name')) {
 
 
@@ -91,11 +91,25 @@ class categorias extends Controller
 
     public function delete($id)
     {
+
+
         $request = request();
         if ($request->session()->get('name')) {
-            $modelo = new cate();
-            $modelo->eliminar($id);
-            return redirect('/sistema/categorias');
+
+
+
+            try {
+                $modelo = new cate();
+                $modelo->eliminar($id);
+                return redirect('/sistema/categorias');
+            } catch (\Illuminate\Database\QueryException $e) {
+                $categ = new cate();
+            $categorias = $categ->categorias();
+
+                    $alerta = 'La categoria tiene recetas asociadas. No se puede eliminar.';
+                    return view('sistema.categoria', compact('alerta','categorias'));
+                
+            }
         } else {
             return redirect('/sistema/login');
         }

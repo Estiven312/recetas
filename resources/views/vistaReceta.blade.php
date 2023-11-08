@@ -1,7 +1,8 @@
 @extends('plantilla')
 @section('estilos')
-    <link rel="stylesheet" href="css/estilosVistaRecetas.css">
+    <link rel="stylesheet" href="{{ asset('css/estilosVistaRecetas.css') }} ">
 @endsection
+
 @section('content')
     <div class="container-fluid " id="vistaReceta">
 
@@ -16,19 +17,19 @@
                 <div class="row">
                     <div class="col-md-7 col-sm-12">
                         <div class="contenedor">
-                            <h2>Pizza Mediterranea</h2>
-                            <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem
-                                Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un
-                                impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de
-                                textos y los mezcló de tal manera que logró hacer un libro de textos especimen.</p>
+                            <h2>{{ $receta[0]['nombre'] }}</h2>
+                            <p>{{ $receta[0]['descripcion'] }}</p>
                         </div>
+
+
+
 
 
                     </div>
 
                     <div class="col-md-5  col-sm-12">
 
-                        <img src="{{ asset('/img/pizza.webp') }}" alt=" pizza">
+                        <img src="{{ asset('/files/' . $receta[0]['imagen']) }}" alt=" pizza" loading="lazy">
 
 
                     </div>
@@ -39,17 +40,12 @@
 
 
                 <div class="contenedor_card  ">
+                    @foreach ($adicionales as $item)
+                        <article class="card">
+                            <img src="{{ asset('/files/' . $item['nombre']) }}" alt=" pizza" loading="lazy">
 
-                    <article class="card">
-                        <img src="{{ asset('/img/pizza.webp') }}" alt=" pizza">
-
-                    </article>
-                    <article class="card">
-                        <img src="{{ asset('/img/pizza.webp') }}" alt=" pizza">
-
-                    </article>
-
-
+                        </article>
+                    @endforeach
                 </div>
 
             </div>
@@ -67,14 +63,15 @@
                         <div class="row">
                             <div class="col-md-8  info  ">
 
+
                                 <div class="">
                                     <h2> Tiempo de Preparación:</h2>
-                                    <p>1.5h</p>
+                                    <p>{{ $receta[0]['tiempo'] }}</p>
 
                                 </div>
                                 <div>
                                     <h2>Rinde para:</h2>
-                                    <p>4 Porciones cada porcion de 250gr </p>
+                                    <p>{{ $receta[0]['rinde'] }}</p>
 
                                 </div>
 
@@ -95,24 +92,8 @@
                                 <h2>INGREDIENTES</h2>
                                 <div>
                                     <ul>
-                                        <li>
-                                            Agua
-                                        </li>
-                                        <li>
-                                            Sal
-                                        </li>
-                                        <li>
-                                            Azúcar
-                                        </li>
-                                        <li>
-                                            Harina
-                                        </li>
-                                        <li>
-                                            Leche
-                                        </li>
-                                        <li>
-                                            Huevos
-                                        </li>
+                                        <?php print $ingredientes; ?>
+
 
                                     </ul>
                                 </div>
@@ -135,28 +116,7 @@
                                 <h2>INSTRUCCIONES</h2>
 
                                 <ol>
-                                    <li>Precalentar el horno a 375 grados Fahrenheit.</li>
-                                    <li>En una olla grande, cocinar la carne molida a fuego medio, revolviendo
-                                        ocasionalmente,
-                                        hasta
-                                        que esté dorada.</li>
-                                    <li>Agregar la cebolla y el ajo a la olla y cocinar, revolviendo ocasionalmente, durante
-                                        5
-                                        minutos más.</li>
-                                    <li>Agregar los tomates enlatados, la salsa de tomate y 1/2 cucharadita de sal a la
-                                        olla.
-                                        Llevar
-                                        a ebullición, luego bajar el fuego y dejar hervir a fuego lento durante 15 minutos.
-                                    </li>
-                                    <li>En un molde para hornear de 9x13 pulgadas, colocar una capa de láminas de lasagna.
-                                    </li>
-                                    <li>Verter la mitad de la salsa de carne sobre las láminas de lasagna.</li>
-                                    <li>Cubrir con 1/2 taza de queso mozzarella rallado.</li>
-                                    <li>Repetir las capas, terminando con una capa de láminas de lasagna.</li>
-                                    <li>Cubrir con el queso parmesano rallado restante.</li>
-                                    <li>Hornear durante 30 minutos, o hasta que la salsa esté burbujeante y el queso esté
-                                        derretido
-                                        y dorado.</li>
+                                    <?php print $instrucciones; ?>
                                 </ol>
 
 
@@ -167,8 +127,7 @@
                     </div>
                     <div class="col-12 ">
                         <div class="contenedor-iframe">
-                            <iframe src="https://www.youtube.com/embed/DOJaGdGoTVo?si=hT9mqPs-9BQm0h1k"
-                                title="YouTube video player" frameborder="0"
+                            <iframe src="{{ $receta[0]['video'] }}" title="YouTube video player" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 allowfullscreen loading="lazy"></iframe>
                         </div>
@@ -185,6 +144,11 @@
                 <div class="anun">
 
                     <div class="color">
+                        <?php if (isset($anuncio) and count($anuncio)>0): ?>
+                        <script src="<?php echo asset($anuncio[0]['anuncio']); ?>"></script>
+                        <?php endif; ?>
+ 
+
 
                     </div>
                 </div>
@@ -208,136 +172,32 @@
 
                 <div class="row contenedor-2">
 
-                    <div class="col-md-4 col-sm-12">
-                        <div class="similares">
-                            <a href="">
-                                <div class="row  ">
+                    @foreach ($similares as $item)
+                        <div class="col-md-4 col-sm-12">
+                            <div class="similares">
+                                <a href="/receta/{{ $item['id'] }}">
+                                    <div class="row  ">
 
 
 
-                                    <div class="col-7">
+                                        <div class="col-6">
 
-                                        <img src="https://www.allrecipes.com/thmb/H8ggg7V9AfxXv4hx9iHsllMGjaw=/364x242/filters:no_upscale():max_bytes(150000):strip_icc():focal(1023x0:1025x2):format(webp)/8120851-2a5e454168814051b5558c9cee7e4a60.jpg"
-                                            alt=" pizza" class="img-fluid" loading="lazy">
+                                            <img src="{{ asset('/files/' . $item['imagen']) }}" alt=" pizza"
+                                                class="img-fluid" loading="lazy">
 
+                                        </div>
+                                        <div class="col-6 p-4">
+                                            <small>{{ $item['categoria'] }}</small>
+
+                                            <h3>{{ $item['nombre'] }}</h3>
+                                        </div>
                                     </div>
-                                    <div class="col-5">
-                                        <small>Ensalada</small>
-
-                                        <h3>Nombre</h3>
-                                    </div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                        <div class="similares">
-                            <a href="">
-                                <div class="row  ">
+                    @endforeach
 
 
-
-                                    <div class="col-7">
-
-                                        <img src="https://www.allrecipes.com/thmb/H8ggg7V9AfxXv4hx9iHsllMGjaw=/364x242/filters:no_upscale():max_bytes(150000):strip_icc():focal(1023x0:1025x2):format(webp)/8120851-2a5e454168814051b5558c9cee7e4a60.jpg"
-                                            alt=" pizza" class="img-fluid" loading="lazy">
-
-                                    </div>
-                                    <div class="col-5">
-                                        <small>Ensalada</small>
-
-                                        <h3>Nombre</h3>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                        <div class="similares">
-                            <a href="">
-                                <div class="row  ">
-
-
-
-                                    <div class="col-7">
-
-                                        <img src="https://www.allrecipes.com/thmb/H8ggg7V9AfxXv4hx9iHsllMGjaw=/364x242/filters:no_upscale():max_bytes(150000):strip_icc():focal(1023x0:1025x2):format(webp)/8120851-2a5e454168814051b5558c9cee7e4a60.jpg"
-                                            alt=" pizza" class="img-fluid" loading="lazy">
-
-                                    </div>
-                                    <div class="col-5">
-                                        <small>Ensalada</small>
-
-                                        <h3>Nombre</h3>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                        <div class="similares">
-                            <a href="">
-                                <div class="row  ">
-
-                                    <div class="col-7">
-
-                                        <img src="https://www.allrecipes.com/thmb/H8ggg7V9AfxXv4hx9iHsllMGjaw=/364x242/filters:no_upscale():max_bytes(150000):strip_icc():focal(1023x0:1025x2):format(webp)/8120851-2a5e454168814051b5558c9cee7e4a60.jpg"
-                                            alt=" pizza" class="img-fluid" loading="lazy">
-
-                                    </div>
-                                    <div class="col-5">
-                                        <small>Ensalada</small>
-
-                                        <h3>Nombre</h3>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                        <div class="similares">
-                            <a href="">
-                                <div class="row  ">
-
-
-
-                                    <div class="col-7">
-
-                                        <img src="https://www.allrecipes.com/thmb/H8ggg7V9AfxXv4hx9iHsllMGjaw=/364x242/filters:no_upscale():max_bytes(150000):strip_icc():focal(1023x0:1025x2):format(webp)/8120851-2a5e454168814051b5558c9cee7e4a60.jpg"
-                                            alt=" pizza" class="img-fluid" loading="lazy">
-
-                                    </div>
-                                    <div class="col-5">
-                                        <small>Ensalada</small>
-
-                                        <h3>Nombre</h3>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                        <div class="similares">
-                            <a href="">
-                                <div class="row  ">
-
-
-
-                                    <div class="col-7">
-
-                                        <img src="https://www.allrecipes.com/thmb/H8ggg7V9AfxXv4hx9iHsllMGjaw=/364x242/filters:no_upscale():max_bytes(150000):strip_icc():focal(1023x0:1025x2):format(webp)/8120851-2a5e454168814051b5558c9cee7e4a60.jpg"
-                                            alt=" pizza" class="img-fluid" loading="lazy">
-
-                                    </div>
-                                    <div class="col-5">
-                                        <small>Ensalada</small>
-
-                                        <h3>Nombre</h3>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
                 </div>
 
             </div>

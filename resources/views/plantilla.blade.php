@@ -8,10 +8,14 @@
     
     <meta name="description"
         content="Recetas fáciles y deliciosas para todos los gustos. Encuentra las recetas que buscas, paso a paso y con fotos.">
-        <link rel="shortcut icon" href="img/EmojioneTaco.png" type="image/x-icon">
+
+        <link rel="shortcut icon" href="{{asset('img/EmojioneTaco.png')}}" type="image/x-icon">
         
     @yield('estilos')
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" rel="preload">
+
+    
+   
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css')}}" rel="preload">
 
 
 
@@ -24,7 +28,7 @@
         <nav class="navbar navbar-expand-md  fixed-top ">
             <div class="container-fluid">
 
-                <a class="navbar-brand" href="#">SABORCULINARIO</a>
+                <a class="navbar-brand" href="/">SABORCULINARIO</a>
 
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -45,8 +49,8 @@
                                     Recetas
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Colombianas</a></li>
-                                    <li><a class="dropdown-item" href="#">Venezolana</a></li>
+                                    <li><a class="dropdown-item" href="/recetas?pais=Colombianas">Colombianas</a></li>
+                                    <li><a class="dropdown-item" href="/recetas?pais=Venezolanas">Venezolanas</a></li>
 
                                 </ul>
                             </div>
@@ -58,9 +62,9 @@
                                     Postres
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Helados</a></li>
-                                    <li><a class="dropdown-item" href="#">Pasteles</a></li>
-                                    <li><a class="dropdown-item" href="#">Galletas</a></li>
+                                    <li><a class="dropdown-item" href="/recetas?pagina=Helados">Helados</a></li>
+                                    <li><a class="dropdown-item" href="/recetas?pagina=Pasteles">Pasteles</a></li>
+                                    <li><a class="dropdown-item" href="/recetas?pagina=Galletas">Galletas</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -72,9 +76,9 @@
                                     Bebidas
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Smoothies</a></li>
-                                    <li><a class="dropdown-item" href="#">Frappe</a></li>
-                                    <li><a class="dropdown-item" href="#">Cocteles</a></li>
+                                    <li><a class="dropdown-item" href="/recetas?pagina=Smoothies">Smoothies</a></li>
+                                    <li><a class="dropdown-item" href="/recetas?pagina=Frappe">Frappe</a></li>
+                                    <li><a class="dropdown-item" href="/recetas?pagina=Cocteles">Cocteles</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -85,8 +89,8 @@
                                     Ensaldas
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Dulce</a></li>
-                                    <li><a class="dropdown-item" href="#">Saluadable</a></li>
+                                    <li><a class="dropdown-item" href="/recetas?pagina=Dulce">Dulce</a></li>
+                                    <li><a class="dropdown-item" href="/recetas?pagina=Saludable">Saludable</a></li>
 
                                 </ul>
                             </div>
@@ -102,14 +106,14 @@
                                     Qué comprar
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Cuchillos</a></li>
-                                    <li><a class="dropdown-item" href="#">Sartenes</a></li>
-                                    <li><a class="dropdown-item" href="#">Eletrodomesticos</a></li>
+                                    <li><a class="dropdown-item" href="guias?categoria=Cuchillos">Cuchillos</a></li>
+                                    <li><a class="dropdown-item" href="guias?categoria=Sartenes">Sartenes</a></li>
+                                    <li><a class="dropdown-item" href="guias?categoria=Electrodomesticos">Eletrodomesticos</a></li>
                                 </ul>
                             </div>
                         </li>
                         <li class="nav-item px-2  ">
-                            <a class="nav-link text-black" href="#">Recetas faciles</a>
+                            <a class="nav-link text-black" href="/recetas?pagina=Faciles">Recetas faciles</a>
                         </li>
                     </ul>
                     <form class="d-flex" role="search">
@@ -137,33 +141,70 @@
             <div class="col-md-4 col-sm-12 text-center">
 
                 <h2>
-                    <a class="navbar-brand" href="#">SABORCULINARIO</a>
+                    <a class="navbar-brand" href="/">SABORCULINARIO</a>
 
                 </h2>
-                <h1>Recetas para todos los gustos</h1>
+               
 
 
 
             </div>
             <div class="col-md-4 col-sm-12 text-left">
+                <div class="row">
+
+              <div class="col-md-4 col-sm-6" >
                 <ul>
-                    <li><a href="">Recetas</a></li>
-                    <li><a href="">Qué comprar</a></li>
-                    <li><a href="">Recetas Faciles</a></li>
+                    <li><a href="/recetas?pagina=Faciles">Recetas Faciles</a></li>
+                    
+
+                   
+
+
+                </ul>
+                <ul>
+                    <li><a href="recetas?pagina=Helados">Helados</a></li>
+                    <li><a href="recetas?pagina=Pasteles">Pasteles</a></li>
+                    <li><a href="/recetas?pagina=Galletas">Galletas</a></li>
+                 
+
+
+                </ul>
+              </div>
+               <div class="col-md-4 col-sm-6">
+              
+                <ul>
+                    <li><a href="/recetas?pagina=Smoothies">Smoothies</a></li>
+                    <li><a href="/recetas?pagina=Frappe">Frappe</a></li>
+                    <li><a href="/recetas?pagina=Cocteles">Cocteles</a></li>
+                   
 
 
                 </ul>
 
+               </div>
+
+               <div class="col-md-4 col-sm-6">
+              
+                <ul>
+                    <li><a href="/recetas?pagina=Dulces">Ensaladas Dulces</a></li>
+                    <li><a href="/recetas?pagina=Saludables">Ensaladas Saludables</a></li>
+                </ul>
+               </div>
+               
+                
+              
+            </div>
+
 
             </div>
             <div class="col-md-4 col-sm-12 text-left">
                 <ul>
-                    <li><a href="">Términos y condiciones</a></li>
+                    <li><a href="">©SABORCULINARIO Todos los derechos reservados</a></li>
                 </ul>
             </div>
     </footer>
 
 </body>
-<script src="bootstrap/js/bootstrap.bundle.min.js" lazy></script>
+<script src="{{ asset('/bootstrap/js/bootstrap.bundle.min.js')}}" ></script>
 
 </html>
