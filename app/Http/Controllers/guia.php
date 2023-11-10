@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\guia as gui;
 use App\Models\categoria_guia;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Storage;
 class guia extends Controller
 {
 
@@ -85,7 +85,14 @@ class guia extends Controller
 
                 if ($extension === "jpeg" || $extension === "jpg" || $extension === "jfif" || $extension === "png"  || $extension === "webp") {
 
-                    move_uploaded_file($archivo, public_path('files/' . $nombre_img));
+                   
+
+
+                    $path = Storage::putFile('public', $archivo);
+                    $filename = pathinfo($path, PATHINFO_FILENAME);
+                    $extension = pathinfo($path, PATHINFO_EXTENSION);
+                    
+                    $nombre_img = $filename . '.' . $extension;
                 } else {
                     return "";
                 }
@@ -158,9 +165,6 @@ class guia extends Controller
 
 
 
-            $imagen = public_path('files/' . $gu[0]['imagen']);
-
-
 
 
             if ($_FILES["principal"]["error"] === UPLOAD_ERR_OK) { //Se adjunta imagen
@@ -169,9 +173,13 @@ class guia extends Controller
                 $archivo = $_FILES["principal"]["tmp_name"];
 
                 if ($extension === "jpeg" || $extension === "jpg" || $extension === "jfif" || $extension === "png"  || $extension === "webp") {
+                    Storage::delete('public/' . $gu[0]['imagen']);
 
-                    unlink($imagen, null);
-                    move_uploaded_file($archivo, public_path('files/' . $nombre_img));
+                     $path = Storage::putFile('public', $archivo);
+                    $filename = pathinfo($path, PATHINFO_FILENAME);
+                    $extension = pathinfo($path, PATHINFO_EXTENSION);
+                    
+                    $nombre_img = $filename . '.' . $extension;
                 } else {
                     return "";
                 }
@@ -200,8 +208,7 @@ class guia extends Controller
             $guia = new gui();
             $img = $guia->eliminar($id);
 
-            $imagen = public_path('files/' . $img[0]['imagen']);
-            unlink($imagen, null);
+            Storage::delete('public/' .  $img[0]['imagen']);
 
             return redirect('sistema/guias');
         } else {

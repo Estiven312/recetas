@@ -29,7 +29,7 @@
 
                     <div class="col-md-5  col-sm-12">
 
-                        <img src="{{ asset('/files/' . $receta[0]['imagen']) }}" alt=" pizza" loading="lazy">
+                        <img src="{{ asset('storage/' . $receta[0]['imagen']) }}" alt=" pizza" loading="lazy">
 
 
                     </div>
@@ -42,7 +42,7 @@
                 <div class="contenedor_card  ">
                     @foreach ($adicionales as $item)
                         <article class="card">
-                            <img src="{{ asset('/files/' . $item['nombre']) }}" alt=" pizza" loading="lazy">
+                            <img src="{{ asset('storage/' . $item['nombre']) }}" alt=" pizza" loading="lazy">
 
                         </article>
                     @endforeach
@@ -182,7 +182,7 @@
 
                                         <div class="col-6">
 
-                                            <img src="{{ asset('/files/' . $item['imagen']) }}" alt=" pizza"
+                                            <img src="{{ asset('storage/' . $item['imagen']) }}" alt=" pizza"
                                                 class="img-fluid" loading="lazy">
 
                                         </div>

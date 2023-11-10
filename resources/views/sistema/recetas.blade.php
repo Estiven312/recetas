@@ -67,7 +67,7 @@
                                         <td>{{ htmlspecialchars_decode($receta['nombre']) }}</td>
                                         <td>
 
-                                            <img src="{{ asset('/files/' . $receta['imagen']) }}"
+                                            <img src="{{ asset('storage/' . $receta['imagen']) }}"
                                                 alt="{{ $receta['nombre'] }}" width="40px" height="40px"
                                                 style="border-radius:50%;">
                                         </td>

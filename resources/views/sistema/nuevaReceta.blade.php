@@ -26,7 +26,7 @@
             @if (isset($receta))
                 <div class="col-6">
                     <h2>IMAGÉN PRICIPAL</h2>
-                    <img src="{{ asset('/files/' . $receta[0]['imagen']) }}" alt="{{ $receta[0]['nombre'] }}" width="400px "
+                    <img src="{{ asset('storage/' . $receta[0]['imagen']) }}" alt="{{ $receta[0]['nombre'] }}" width="400px "
                         height="400px"><br>
                 </div>
             @endif
@@ -38,7 +38,7 @@
 
                         @foreach ($imgs as $img)
                             <div class="col-6 p-1">
-                                <img src="{{ asset('/files/' . $img['nombre']) }}" alt="" width="200px "
+                                <img src="{{ asset('storage/' . $img['nombre']) }}" alt="" width="200px "
                                     height="200px">
                             </div>
                         @endforeach

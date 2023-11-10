@@ -123,7 +123,7 @@
                                         <div class="guia">
                                             <a href="/guia/{{ $guia['id'] }}">
                                                 <div class="contenedor_img">
-                                                    <img src="{{ asset('/files/' . $guia['imagen']) }}" alt="cuchillo"
+                                                    <img src="{{ asset('storage/' . $guia['imagen']) }}" alt="cuchillo"
                                                         loading="lazy">
 
                                                 </div>
@@ -151,7 +151,7 @@
                         </div>
 
                         <div class="col-12 text-center">
-                            @if (isset($guias) and count($guias) == 15)
+                            @if (isset($guias) and count($guias) >= 15)
                                 <div class="spacio-but">
                                     <form action="" method="post">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">

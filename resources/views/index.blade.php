@@ -21,7 +21,8 @@
                     </div>
 
                     <div class="imagen">
-                        <img src="{{ asset('/files/' . $destacada['imagen']) }}" alt=" {{ $destacada['nombre'] }}" loading="lazy">
+                       
+                        <img src=" {{ asset('storage/' . $destacada['imagen']) }}" alt=" {{ $destacada['nombre'] }}" loading="lazy">
                     </div>
                 </div>
 
@@ -77,7 +78,7 @@
                                     <a href="/receta/{{ $item['id'] }}">
                                         <div class="row">
                                             <div class=" col-7 imagen-card">
-                                                <img src="{{ asset('/files/' . $item['imagen']) }}"
+                                                <img src=" {{ asset('storage/' . $item['imagen']) }}"
                                                     alt=" {{ $item['nombre'] }}" loading="lazy">
 
 
@@ -120,7 +121,7 @@
                     <div class=" cards ">
                         <div class="p-4 cont-recetas text-center">
 
-                            <img src="{{ asset('/files/' . $item['imagen']) }}" alt=" {{ $item['nombre'] }} "
+                            <img src="{{asset('storage/' . $item['imagen']) }}" alt=" {{ $item['nombre'] }} "
                                 class="img-fluid" loading="lazy">
                             <div class="cont-recetas-menor">
                                 <h2>{{ $item['nombre'] }}</h2>

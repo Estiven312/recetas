@@ -109,7 +109,7 @@
                                                 <a href="receta/{{ $item['id'] }}">
                                                     <div class="row">
                                                         <div class="imagen-card col-md-12 ">
-                                                            <img src="{{ asset('/img/'. $item['imagen']) }}" alt=" pizza"
+                                                            <img src="{{ asset('storage/' . $item['imagen']) }}" alt=" pizza"
                                                                 class="img-fluid" loading="lazy">
                                                         </div>
                                                         <div class="nombre-card ">

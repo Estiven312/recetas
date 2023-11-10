@@ -10,6 +10,7 @@ use PhpParser\Node\Expr\New_;
 use App\Models\recetas;
 use App\Models\img_adicionals;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 
 use PhpParser\Node\Expr\AssignOp\Coalesce;
@@ -86,7 +87,13 @@ class nuevaReceta extends Controller
                 $archivo = $_FILES["principal"]["tmp_name"];
 
                 if ($extension === "jpeg" || $extension === "jpg" || $extension === "jfif" || $extension === "png"  || $extension === "webp") {
-                    move_uploaded_file($archivo, public_path('files/' . $nombre_img));
+
+                    $path = Storage::putFile('public', $archivo);
+                    /*move_uploaded_file($archivo, public_path('files/' . $nombre_img));*/
+                    $filename = pathinfo($path, PATHINFO_FILENAME);
+                    $extension = pathinfo($path, PATHINFO_EXTENSION);
+
+                    $nombre_img = $filename . '.' . $extension;
                 } else {
                     return "";
                 }
@@ -104,7 +111,12 @@ class nuevaReceta extends Controller
                         $nombre_img = str_replace(' ', '_', date("Ymdhmsi") . "_$key.$extension"); // Agrega $key al nombre del archivo
                         $archivo = $tmp_name;
                         if (in_array($extension, ["jpeg", "jpg", "jfif", "png", "webp"])) {
-                            move_uploaded_file($archivo, public_path('files/' . $nombre_img));
+                            $path = Storage::putFile('public', $archivo);
+                            /*move_uploaded_file($archivo, public_path('files/' . $nombre_img));*/
+                            $filename = pathinfo($path, PATHINFO_FILENAME);
+                            $extension = pathinfo($path, PATHINFO_EXTENSION);
+
+                            $nombre_img = $filename . '.' . $extension;
                             $archivos_subidos[] = $nombre_img;
                         }
                     }
@@ -128,17 +140,17 @@ class nuevaReceta extends Controller
         $modelo = new paises();
         $modelo1 = new categorias();
         $modelo_receta = new recetas();
-        $adicionales= new img_adicionals();
+        $adicionales = new img_adicionals();
 
         $paises = $modelo->paises();
         $categorias = $modelo1->categorias();
         $id_receta = $id;
         $receta = $modelo_receta->buscar_id($id);
 
-        $imgs=$adicionales->buscar($id);
+        $imgs = $adicionales->buscar($id);
 
 
-        return view('sistema.nuevaReceta', compact('paises', 'categorias', 'receta','imgs'));
+        return view('sistema.nuevaReceta', compact('paises', 'categorias', 'receta', 'imgs'));
     }
 
     public function actualizar(Request $request, $id)
@@ -169,8 +181,8 @@ class nuevaReceta extends Controller
 
             $receta_id = $receta->buscar_id($id);
 
-           $vistas = $receta_id[0]['visitas'];
-         
+            $vistas = $receta_id[0]['visitas'];
+
             // Obtiene la fecha actual
             $fecha = Carbon::now();
             // Establece la zona horaria de Colombia
@@ -186,9 +198,15 @@ class nuevaReceta extends Controller
                 $archivo = $_FILES["principal"]["tmp_name"];
 
                 if ($extension === "jpeg" || $extension === "jpg" || $extension === "jfif" || $extension === "png" ||  $extension === "webp") {
-                    $imagen = public_path('files/' . $receta_id[0]['imagen']);
-                    unlink($imagen, null);
-                    move_uploaded_file($archivo, public_path('files/' . $nombre_img));
+
+                    Storage::delete('public/' . $receta_id[0]['imagen']);
+
+
+                    $path = Storage::putFile('public', $archivo);
+                    $filename = pathinfo($path, PATHINFO_FILENAME);
+                    $extension = pathinfo($path, PATHINFO_EXTENSION);
+                    
+                    $nombre_img = $filename . '.' . $extension;
                 } else {
                     return "";
                 }
@@ -197,7 +215,7 @@ class nuevaReceta extends Controller
                 $nombre_img = $receta_id[0]['imagen'];
             }
 
-            
+
 
             $receta->actualizar($id, $nombre, $descripcion, $pais, $tiempo, $rinde, $ingredientes, $instrucciones, $categoria, $nombre_img, $video, $vistas, $fechaActual);
             $img_adicional = $adicionales->buscar($id);
@@ -205,29 +223,30 @@ class nuevaReceta extends Controller
             $archivos_subidos = [];
             if (isset($_FILES["complementarias"])) {
                 $imagenes = $_FILES["complementarias"];
-                
+
                 foreach ($imagenes["tmp_name"] as $key => $tmp_name) {
                     if ($imagenes["error"][$key] === UPLOAD_ERR_OK) {
                         $extension = pathinfo($imagenes["name"][$key], PATHINFO_EXTENSION);
                         $nombre_img = str_replace(' ', '_', date("Ymdhmsi") . "_$key.$extension"); // Agrega $key al nombre del archivo
                         $archivo = $tmp_name;
                         if (in_array($extension, ["jpeg", "jpg", "jfif", "png", "webp"])) {
-                            move_uploaded_file($archivo, public_path('files/' . $nombre_img));
+                            $path = Storage::putFile('public', $archivo);
+                            /*move_uploaded_file($archivo, public_path('files/' . $nombre_img));*/
+                            $filename = pathinfo($path, PATHINFO_FILENAME);
+                            $extension = pathinfo($path, PATHINFO_EXTENSION);
+                            
+                            $nombre_img = $filename . '.' . $extension;
                             $archivos_subidos[] = $nombre_img;
                         }
                     }
                 }
-
-
-               
             }
 
-            if(empty($archivos_subidos)){
+            if (empty($archivos_subidos)) {
                 return redirect('sistema/recetas');
-            }else{
+            } else {
                 foreach ($img_adicional as $re) {
-                    $imagen = public_path('files/' . $re['nombre']);
-                    unlink($imagen, null);
+                    Storage::delete('public/' . $re['nombre']);
                 }
                 $adicionales->eliminar($id);
 
@@ -237,7 +256,6 @@ class nuevaReceta extends Controller
                 }
                 return redirect('/sistema/recetas');
             }
-            
         } else {
             return redirect('/sistema/login');
         }
@@ -257,13 +275,11 @@ class nuevaReceta extends Controller
 
             $imagenes = $adicionales->eliminar($id);
             foreach ($imagenes as $nombre) {
-                $imagen_path = public_path('files/' . $nombre['nombre']);
-                unlink($imagen_path, null);
+                Storage::delete('public/' . $nombre['nombre']);
             }
             $img = $receta->eliminar($id);
-            $imagen = public_path('files/' . $img[0]['imagen']);
-            unlink($imagen, null);
 
+            Storage::delete('public/' . $img[0]['imagen']);
             return redirect('sistema/recetas');
         } else {
             return redirect('/sistema/login');

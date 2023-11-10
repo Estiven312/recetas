@@ -30,7 +30,7 @@
                 </div>
                 <div class="imagen">
 
-                    <img src="{{ asset('/files/'.$guia[0]['imagen']) }}" alt="{{$guia[0]['nombre']}}" loading="lazy">
+                    <img src="{{ asset('storage/' . $guia['imagen']) }}" alt="{{$guia[0]['nombre']}}" loading="lazy">
                 </div>
 
             </div>
@@ -71,7 +71,7 @@
                             <div class="guia">
                                 <a href="/guia/{{$item['id']}}">
                                     <div class="contenedor_img">
-                                        <img src="{{ asset('/img/knives.webp') }}" alt="cuchillo" loading="lazy">
+                                        <img src="{{ asset('storage/' . $item['imagen']) }}" alt="cuchillo" loading="lazy">
 
                                     </div>
                                     <div class="contenedor_descripcion">

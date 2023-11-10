@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\recetas as receta;
+use Illuminate\Support\Facades\Storage;
 
 
 
